@@ -1,0 +1,2786 @@
+<VS-BGP>display current-configuration 
+!Software Version V800R012C10SPC300
+!Last configuration was updated at 2024-11-06 14:23:59+00:00 by haferreira
+!Last configuration was saved at 2024-11-06 14:24:41+00:00
+#
+sysname VS-BGP
+#
+command group Backup
+ end-group
+#
+FTP server-source -i LoopBack0
+undo FTP server-source all-interface
+undo FTP ipv6 server-source all-interface
+#
+FTP client-source -i LoopBack1
+#
+service-template template-default0
+#
+service-template template-default1
+#
+service-template template-default2
+#
+service-template template-default3
+#
+service-template template-default4
+#
+vlan batch 10 19 21 to 28 30 34 to 36 41 to 44 51 to 58 71 to 74 79 100
+vlan batch 110 120 160 170 198 200 210 to 211 220 230 240
+vlan batch 250 260 262 to 265 270 303 to 304 318 321 325 to 326 353 to 357 361 to 366
+vlan batch 368 to 380 382 to 391 405 to 454 460 to 462 464 480 530 540 550 701 to 708
+vlan batch 777 905 to 906 999 to 1001 1006 1011 to 1014 1025 to 1033 1036 to 1043 1084 1111 1201 to 1204
+vlan batch 1210 to 1214 1219 to 1220 2000 2516 3010 to 3012 3035 4094
+#
+rsa peer-public-key 10.11.2.2
+ public-key-code begin
+ 3082018A
+  02820181
+    00B5AC2F 8AB2EFB3 2CB61E2E B6DAC3A6 4F3AC9E0 6EE8E677 785610CD 81147797
+    A6846AE5 D36D562F FDD908F7 C732F8DE 35FD4F51 97AC6179 0B3A99EE 73DDBD8C
+    C19715D9 D87EF264 F1CF241F 8398988A CF31DAF5 79E59A7D 45336BA5 719C14A8
+    EB61DACD B3FF0F4B E04B3F93 72113165 29354122 DC38AFB9 B08369A3 504C83FD
+    A96B958B 9D7D56F9 B49EF012 6F956512 27E37C4A 62895BD2 5D665B3C 8F584EC2
+    D7D9AABB FD8E5C6E A61EDCFF AD0CEEDC E24BE5D6 9E01AA46 3903EA35 3188F95D
+    8F5B9BBF 45EF6FD3 B584AAEF 05B5050F 82898187 8581BE9A 6CDDEAC5 65F8EB69
+    94634FA4 BB351034 58322492 135E29E8 03FCF109 EAF5FCF8 F725A7B1 DE598848
+    3E64BCB7 6049627D BA3331BF EC6CDD4B 2ED907AF BBE3355D 8685D17F F022D8C4
+    19FB7E8B 5429E07F 924A66E2 1F61487A 423CADAA 9153B67D 14F31392 6177430A
+    F9679C68 E70273A5 9492E022 D5E52AB3 4F0AB245 ED15B547 D6FE692E D1F096F1
+    ECB2B728 093A54E1 7B8A15AF 0BB355DE 4FF945DD 44448511 04253B94 FA5E954E
+    7B
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.2
+ public-key-code begin
+ 3082010A
+  02820101
+    00D0C19C 9017A856 824453CF 95CE2F39 130A558C 1879697E D717654C A91B60AF
+    E00DEB37 565AA566 3EBA08CB 5D83A5BE A06FFB29 EABA6941 A7231E39 0743A256
+    7E4A202B 622AE2DE 886DA2D0 A7EA6C46 B1D6B066 3C0583B7 4C85D001 A4E1AEEA
+    E8ADA792 43E9760B E532F945 DDCFAAB7 03FB027F 593BF1BF 155E78A0 FCEBB661
+    D1815A4E 2F0FEE09 3E3ECA3F 1BEAD8D2 6A230D17 88B51A80 178434F2 CFBCCA98
+    E4B7E83B 99421F39 FF82E968 FE6AE9FB 2DD0EA59 6FCAD18F FC854603 D82B7E95
+    C55BE9FD F042F139 930B04DE 23E1AEF9 44828826 6A06175D 048F543C 7E155262
+    2C898A4C AE13CA2E 546B393B 05C4B90B 223D3A22 1318141A B4262150 A48ACDE6
+    B5
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.3
+ public-key-code begin
+ 3082010A
+  02820101
+    00CFAC45 FA8D6938 C08D7C1A F54C9B24 B53DE5C2 F47DD5A9 40A723E2 09C4D278
+    27E9B4C7 C0CC71FC 581EF673 54C16E0B C3788DE4 7858EBAF 4C54D99F 10268882
+    7F9144F0 5C1C2D40 FD317D82 6C34A47E 2C8EEAD6 5D5B1513 F8CCAD08 5AD7EEB1
+    DDD0AD61 6AA2CE2E D6D2A5E0 5DF31B52 B9D2E136 C7091501 35C46819 63A7ACBA
+    0AB278B8 9CE95863 C05EA9AA 2787FA66 244BE6A1 FAE2F9FB 545FF8A1 82D26BD0
+    74E47BD0 BFF9209C 872B39EE 71BA35DD 8C89F234 AD6EBBD6 94C58E67 20560A97
+    5750FDA4 4D97C08A 1BF6047E 817A0918 9746A755 F88D4E58 3AE9A857 3DDD2EB0
+    7670B3C9 D39AE415 02D409DC C25A577B F658CF3F D6E164D5 C6ABDB09 2DA258C8
+    C1
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.4
+ public-key-code begin
+ 3082010A       
+  02820101
+    00C024D4 AE710072 29AECABB 13F8CEB8 781D290A B7A36E0E 384A6F32 1DCB41F9
+    02629BF2 C778B67D C724A1CD E71CFF1A 54872644 61299CA1 F35F6580 8073D72A
+    8CAB6047 23FBA0B4 62FDA355 2DAD1FCD 3D7A2A32 C0B51A85 510CDE7C 7E3561FA
+    4FCEED46 FF9FD7A1 34166A1B 7D396FC5 45D89561 5E7D1582 E0824DD3 18AB9C75
+    DCC6B71D A8430093 D6377BF5 38AAFE24 227D46D7 7F7A01B5 39E132B6 F339EA6A
+    35D15FD8 60525514 9197D101 4FF4DED9 04346356 D4C504BE C4AE0913 0BB30A29
+    EE57D577 7B79FCC9 25AEF289 63618BE5 98374742 DAFA911E 6BE08280 CBECE274
+    CD2E5515 96913F9A C7EDEC33 DCB11BC4 190FF357 AF112DE7 1D8753DD FE3B26E7
+    35
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.5
+ public-key-code begin
+ 3082010A
+  02820101
+    00B26582 981CC66A 64EBA4B0 A307F116 DF2A45BB D73148B2 1514A362 100FA57A
+    08418C66 59A79B4D D05531A4 1EB0BE4D DA07A2C7 ADBC2D5B 3F542017 6E8F7C1B
+    EA52E072 425137C2 AE2F1DFE 17F8AA35 588DBA5C 2DE702C9 5228175E B11330CB
+    4E9F6FF6 BF5F14EE E6047BF5 FE36A73C F34B3F02 12B39F93 EEC224DE 83ECFB57
+    1AC6CE48 D827723E C997DCC8 49FFBBB8 247F1754 3284F0EF 44CC0FA5 02209EF9
+    D261298B D09F0826 C2D71F78 0CA43684 231CF5A4 443126AB AA20C3AF 94F430F1
+    981BBDB6 E7B3723D 7CFE2095 05D6A991 1AED7A23 67E639B2 BE338AAB 13F361B6
+    120416F3 AB7E9B97 B76E89DF 28207216 4D2AFB9A 0908460E C62C296F 2CAF3D3F
+    3B
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.6
+ public-key-code begin
+ 3082010A
+  02820101
+    00C21EC6 59A4D3CA 6B12F6F9 0F43EB3F EFCA12C0 F99B3FAC B142AC74 29355D96
+    4A62265F 13A9F567 1371D52D CC73D89D 88CD8FB2 CC5BD9BE E36FFB44 00C388A2
+    719E9673 C35166BD 55645B37 3D8D6352 3BF880BC 2D0C794E 163F893B 4BA96BCB
+    1E01085B BD973B88 36F82525 A472FBBA B4366B1E B93DE6C7 729B03DE 08363430
+    A0BC1C3B 2120DDC7 38445CEA E7DD8646 D111C212 AE92A54F BC70A0F8 CBDDF071
+    86F933CE A3F02F9E B679315F 68BAA732 491E6105 24837482 30304E11 FD2B9C9C
+    EE3F8358 B23526C9 B7E771B9 005AEC2A 31ECD7A3 D2643095 E48F0693 9D497355
+    2F3FC793 1F7CF209 92623514 63466613 655E973F 3883F741 756A86D5 494254D6
+    DB          
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.7
+ public-key-code begin
+ 3082010A
+  02820101
+    00EB0C9C D531DE32 D777B9B2 9570080D 33710775 47DF5775 347298EA 6786F540
+    5F448C43 BA2EE35F 3500A5A1 A6813821 BEE810A9 7FC7744C 3B443245 F13D404D
+    457D5D06 76CA333E 73DC4AB6 BADDBD62 8AF52C2A EC18BF41 AE6A5DC0 BBF9E86C
+    880B7BD7 05A4DEE0 A6E3BFD6 52DCEBEC 0C946135 914561FB 0ACB6F13 753412B3
+    C71D9AAF D3CC9470 BEFD004D 0518F7A1 45662775 8E9BC011 9F53BD9D 6B046BD5
+    816610FF D4AF8632 A6EAAA7A CBE7E203 AC9BF9D2 F5E7B6B7 15A9B64F 8FA3BB91
+    5873E270 5329951E CBAC7F28 5F8D3E06 E0B58ABD 474F7FCF 473A3332 DCB50AFF
+    640B1A91 B5763493 C4CD09BD 6F4D9AC2 2EB678DB 5D37CF7E 6C669EC9 12D6FDE8
+    83
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#               
+rsa peer-public-key 10.11.20.8
+ public-key-code begin
+ 3082010A
+  02820101
+    00BE7038 CCDBB49E BCE9CA5B 225BF61F DE4580CD 4C2C0F60 8B060A94 49E5447E
+    320572A6 97D0122A B7F8F35E 6465942C 874A773B DFBAFA8A EDFDB48A 950A2D2E
+    299A02C8 4C61A83A D7D64DF6 1D1536D7 2F3C2829 C67A8523 65C80570 8C360B47
+    74D02FB0 C68D83CA 7E3DAF8E 2BC38286 3BC157A4 A41839DD E7941F71 7414FC97
+    AFA23FEE EB29285A 9461064E 3CD182A2 2A828220 F3D42C67 81145E2D 08F6A917
+    EFFF7B14 72A09C81 11474540 4AECF70E BE627B3B 06780E83 E0F05499 F1E43619
+    0E6E0CB9 FFAD10D6 5E444377 667D745D 532822BF 1D7095ED B488CAC5 ED645868
+    44A0ABFE 5C368D56 184BDF6B 87B9B152 F685E65F 4D7FA536 017C75F2 D579BBA6
+    A9
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.9
+ public-key-code begin
+ 3082010A
+  02820101
+    00E50231 59A5472E 563F828C 896FED38 F69C30FF 3B535350 5BFC0D71 03CC9270
+    48B8BBC4 F3E48C5B 86E7A034 98F4DCFB D2A1A924 9C9D4379 B59A9F33 11AB41FA
+    91E06D89 A0412998 74A7AAD5 2F2EAA19 889C091B 9F844DEA BD852ED4 D671EBFD
+    1421B394 9567038C 9409B0BF 62A83834 B632ACEC AFC1DF13 99B7FAB8 268EE976
+    A5F85A2C 3764CAFA 7FB72CE9 C67C7C24 CB6BE950 C22680D6 3E061481 4CA34FF3
+    4F4E2088 0CDFC266 28DE0A7A 6FC6F637 F086DB28 70F62081 D47546F0 BD93CA5D
+    B2D7D814 AD9EFFE6 FE9DCB82 6FAD7EC0 2A8FDF24 921543D4 F376BE24 028BEFD7
+    E56117CA 94FB2671 C588427C 10000518 98280F04 66C7F44D ACE73D5B 794A85CB
+    0B
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.22.2
+ public-key-code begin
+ 3082010A
+  02820101
+    00CFAC45 FA8D6938 C08D7C1A F54C9B24 B53DE5C2 F47DD5A9 40A723E2 09C4D278
+    27E9B4C7 C0CC71FC 581EF673 54C16E0B C3788DE4 7858EBAF 4C54D99F 10268882
+    7F9144F0 5C1C2D40 FD317D82 6C34A47E 2C8EEAD6 5D5B1513 F8CCAD08 5AD7EEB1
+    DDD0AD61 6AA2CE2E D6D2A5E0 5DF31B52 B9D2E136 C7091501 35C46819 63A7ACBA
+    0AB278B8 9CE95863 C05EA9AA 2787FA66 244BE6A1 FAE2F9FB 545FF8A1 82D26BD0
+    74E47BD0 BFF9209C 872B39EE 71BA35DD 8C89F234 AD6EBBD6 94C58E67 20560A97
+    5750FDA4 4D97C08A 1BF6047E 817A0918 9746A755 F88D4E58 3AE9A857 3DDD2EB0
+    7670B3C9 D39AE415 02D409DC C25A577B F658CF3F D6E164D5 C6ABDB09 2DA258C8
+    C1
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.0.214
+ public-key-code begin
+ 3082010A
+  02820101
+    00A34C38 C5DFFF85 EA1024C5 A2E5F56E 6F7DF315 11D2FFB9 B3F57C15 0266B362
+    72D7DB37 3FBD6C01 62710161 9C3F1CDC 718D1419 EC69AAAE 399FC5B4 2D0E8EE4
+    5222DFD0 A9261BA5 D23EFCF8 22496B58 E1278BB0 D4AC1FD2 1579EA9E 34D44638
+    913799CB BA97C3CC 6B03FDA4 D4D48F3F 98AB9274 09EBFB79 5128AB6E 245234F6
+    270061F8 6FCE832C 97C5DE71 47001D52 47E8BA7D 03A8B5C1 59B23D52 FC437DB3
+    9E1C5436 70E99C40 750B9879 E1CE5EB8 6C2853B7 8497FD64 3C5B2DAB 927E2905
+    EBAC1C7A B71EF3C9 020D8510 8DC23895 D44611DF B398B9AA BA905CB8 C5EA01F9
+    160B3EB4 F5DF957C F305EDFC 5F4B9212 82736B79 A11D48E6 A26CA112 DBF7CE58
+    11
+  0203
+    010001      
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.10
+ public-key-code begin
+ 3082010A
+  02820101
+    00B890C9 C9BBA104 F5742612 DBC823DD B061D56A 60DDA297 2FDAEAF4 D7C9CABB
+    46B02F2B 651BDA2E 35694B5D 97904447 EDDAD479 36D3D3B3 55C27B0E 9D924263
+    2C1EBCF2 5C676C34 03043AC5 68805D28 221BB24B 435CB816 E95CD4F4 0AACCAA9
+    5C3F6E66 7930625A 93A386B1 56BA30E9 65F8D09E B66D16A1 A0B438F2 A30FA080
+    0C4262E1 F1E54D6E CB266922 9ED3EFF5 4D1542EB 9CA08BE4 919DA5F8 D24D8BC3
+    FAA1BD83 1505E2DC 87B1F766 0B0EF55C F37D584A C453AD71 60658F88 7AB90BE5
+    94833DEC 152A6110 B1FD5885 58B1C705 8A31FD90 1A8027F1 1E766844 EAA13066
+    3D6B7CFC 54AA939A B1E99E0D EE1F4F24 10AB433B 5E71BA55 EBBA931F F8E7703B
+    C3
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.12
+ public-key-code begin
+ 3082010A
+  02820101
+    00BB1156 6DA61241 E1E5844E 77ECFEBA 3A073888 73045723 6772D7E4 BC73E7C6
+    6F3C2703 88FA4DB9 4C455867 918D89BD CB2B5720 11733D58 DF893E91 AF62741B
+    5F798385 B96BA86B 0DAAC6B0 4EC25A16 50486CDC C3FDEBFF C143D2E2 B0A00D4A
+    B99243D8 7C71A291 18F1D634 B3EBFB74 9E8DD11A 7C8BD8BD 2F7DA721 4B1AFEB9
+    2B0A619F 3A8B0A6D A6D12DB1 A7F7CD02 F983F4EF 7D6F3926 59731907 501A6084
+    11B2AFBC CED97C66 594D9EE0 F423CC23 DB4A7E6A 29C45A61 C7488941 5E63D9F6
+    B0533591 9EA4805F 98B83835 AC932745 97398BD7 FE528369 6AA8630A 63E847FD
+    E5282C0C 588A8C83 B0598212 40AD1A50 9FFE3D43 70515526 FB6318F8 9CEA3D86
+    13
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.14
+ public-key-code begin
+ 3082010A
+  02820101
+    00A17CC8 5773F57B DD34EBB3 F2C5E99F BAB64471 45AC5A84 8BE8A4F2 EDAC8201
+    1C572D37 8C3506CB 940B7E83 5B1863D5 0A5B87AE E0BF17DB ACD0B8EB 7ADD1B51
+    6A22A68E 46B34921 FAB3735B 1A26810C 0027FCC3 37493DAA C3774E44 9A2A9D6E
+    91154461 D8F39378 4988A78B 213EC570 4549437F B67B555A 42CD261A 27A93C05
+    9048045B EB2CDEF9 CCD8F444 60CB864F A9759D03 787CB8BB 5ECB8015 8D2677AE
+    AFBFA7D4 9A34CF8F BB274EDC F5B3558A 051917FF 101ABFB0 44580FA5 D1F16CB5
+    1E888C42 AF9F0474 B73FC9C6 02AEA3CE 29AEB33B 2FE6025F 045C4DDA E870BD64
+    CD783EB3 BD4085EE 5F6EB36D DFA4033D 54F925A4 5E49EB06 2F045C7B 04DFEA4C
+    C3
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 10.11.20.15
+ public-key-code begin
+ 3082010A
+  02820101
+    00A9F2FE F255DD3E 55E887C6 75441659 8FE956A6 4F951DC9 D1BAEC84 4F46773A
+    8E8F6B90 57D14996 771E005E 3777D0CC 35558EC0 E5A2F15F 6A1DA96A 3634AC5D
+    6EC539A9 76A7EA2E 3A8445FC 4A72C65A F93C4267 5752151D 192AF825 A8661373
+    761CC143 BF2415E9 2C9B7B71 EAC4EF5F AF31CA32 E131F073 C637576F 1293B838
+    74A7B090 4CC9C085 344C99E6 B2F7EBB5 3C463E9A E2CD0159 7076866F 5385B9EF
+    B5DDBD5A DFECECFE F7F47F5C 29CEDBCF 80334FA5 B7D3F14A F2FA65FD 92A0098F
+    F5740852 715DE249 FF5EA577 C1F7FD06 5B37B7EF 14DBD146 0EB23293 44AD70B0
+    D1E6E474 FD88A5B2 9911AEA4 547843FF 62843A31 152B69F8 8FBCB5C4 398DCDDA
+    27
+  0203
+    010001
+ public-key-code end
+ peer-public-key end
+#
+rsa peer-public-key 138.118.223.250
+ public-key-code begin
+ 30820108
+  02820101
+    00B80B6C 9C74E14A D13F1DCE 1D176A40 ADB55AD5 9A81C690 EC63DAFF 257F1398
+    9BB3DBE2 D31356CB 87BFD4A5 0FEE17BC 2CA43347 8A1735A9 706FA9E1 5D05BDEA
+    A70A6274 33214A80 7FD36C2B 171D52AD D72A722E C1E2015A D3E7AB98 5E4F6152
+    1A5E6FFF A51BB81B B551783A 5DA39B06 02766B3C C8E2BBF4 39110910 F35D772F
+    AE432812 D4AF396E 618B5A09 7C1CD69F 08F3FC54 A9C1BFEF 5F7264FA 895B50AA
+    FF9D0827 61DDCE39 0E2B9646 724062D5 AF6EEA3C BF782B51 B8758237 88F7B7B4
+    5D6568B3 F499CE42 28B0276C 121F0CB6 8CCFCFA3 1F8129B9 3F62D898 9465FDB8
+    14EA1AF1 F950C884 A45775D9 E1F3E7D7 8853C60C C7C9EC73 68CEC386 4C1AA4D4
+    A5
+  0201
+    03
+ public-key-code end
+ peer-public-key end
+#
+ecc peer-public-key 10.11.0.86
+ public-key-code begin
+  0451FB97 EB8CF5D0 28DF4231 9070624D 12DE91AB C94680EA DDF54C48 78DC740C
+  0E7D14DE 7D0DD6C3 FA0CA01D E791BC58 89DEC63F 41E9EB66 33B4A6EA BC3121E6
+  17
+ public-key-code end
+ peer-public-key end
+#
+undo icmp name timestamp-reply send
+#
+as-notation plain
+#
+ip netstream timeout active 1
+ip netstream timeout inactive 15
+ip netstream export version 9
+ip netstream export index-switch 32
+ip netstream export template timeout-rate 1
+ip netstream sampler fix-packets 1000 inbound
+ip netstream sampler fix-packets 1000 outbound
+ip netstream export source 138.118.223.255
+ip netstream export host 138.118.223.226 9995
+ip netstream export template option sampler
+ip netstream export template option timeout-rate 1
+#
+ipv6 netstream timeout active 1
+ipv6 netstream timeout inactive 15
+ipv6 netstream export version 9
+ipv6 netstream export index-switch 32
+ipv6 netstream export template timeout-rate 1
+ipv6 netstream sampler fix-packets 1000 inbound
+ipv6 netstream sampler fix-packets 1000 outbound
+ipv6 netstream export source 138.118.223.255
+ipv6 netstream export host 138.118.223.226 9995
+ipv6 netstream export template option sampler
+ipv6 netstream export template option timeout-rate 1
+#
+set save-configuration delay 1
+set save-configuration backup-to-server server 200.108.189.16 transport-type ftp port 2120 user natverknjord password %^%#~i_'5fYVs(Ym5PTN'rBK}_lQKgjC`;l5c,.]o:wG%/n=::!Pk~WOBM:PW:VS%^%# 
+set save-configuration backup-to-server server 179.124.16.141 transport-type ftp port 52121 user natverk password %^%#,2@98!^G4)vUf*!D(#WY>pPoCbsQ>>{y0=#&lnb1%^%# path /backups/bitcontrol
+#
+undo telnet server-source all-interface
+undo telnet ipv6 server-source all-interface
+#
+qos-profile BSNET
+ car cir 6144000 cbs 6144000 green pass red discard
+#
+qos-profile CONNECT
+ car cir 5120000 cbs 5120000 green pass red discard
+#
+vlan 19
+#
+vlan 21
+#
+vlan 22
+#
+vlan 23
+#
+vlan 24
+#
+vlan 25
+#
+vlan 26
+#
+vlan 27
+#
+vlan 28
+#
+vlan 34         
+ description L2-Wirelink-->Gigabyte-v4
+#
+vlan 35
+ description L2-Wirelink-->Gigabyte-v6
+#
+vlan 51
+#
+vlan 52
+#
+vlan 53
+#
+vlan 54
+#
+vlan 55
+#
+vlan 56
+#
+vlan 57
+#
+vlan 58
+#
+vlan 71
+#               
+vlan 72
+#
+vlan 73
+#
+vlan 74
+#
+vlan 198
+#
+vlan 905
+#
+vlan 906
+#
+vlan 999
+#
+vlan 1006
+#
+vlan 3012
+#
+dhcp server request-packet all-interface disable
+#
+acl number 3000
+ description PREFIXOS-CGNAT-BOX01
+ rule 5 permit ip source 100.64.220.0 0.0.3.255
+ rule 10 permit ip source 100.65.220.0 0.0.3.255
+ rule 15 permit ip source 100.66.220.0 0.0.3.255
+ rule 20 permit ip source 100.67.220.0 0.0.3.255
+ rule 25 permit ip source 100.68.220.0 0.0.3.255
+ rule 30 permit ip source 100.69.220.0 0.0.3.255
+ rule 35 permit ip source 100.70.220.0 0.0.3.255
+ rule 40 permit ip source 100.71.220.0 0.0.3.255
+#
+acl number 3001
+ description PBR-CGNAT-BOX01-BYPASS
+ rule 5 permit ip destination 100.64.0.0 0.63.255.255
+ rule 6 permit ip destination 10.11.0.128 0.0.0.3
+ rule 7 permit ip destination 138.118.223.250 0
+ rule 8 permit ip destination 10.11.0.160 0.0.0.3
+ rule 9 permit ip destination 138.118.223.251 0
+ rule 15 permit ip destination 10.0.0.0 0.255.255.255
+ rule 20 permit ip destination 172.16.0.0 0.15.255.255
+ rule 35 permit ip destination 100.102.0.0 0.0.3.255
+#
+acl number 3003
+ description PREFIXOS-CGNAT-BOX02
+ rule 5 permit ip source 100.72.220.0 0.0.3.255
+ rule 10 permit ip source 100.73.220.0 0.0.3.255
+ rule 15 permit ip source 100.74.220.0 0.0.3.255
+ rule 20 permit ip source 100.75.220.0 0.0.3.255
+ rule 25 permit ip source 100.76.220.0 0.0.3.255
+ rule 30 permit ip source 100.77.220.0 0.0.3.255
+ rule 35 permit ip source 100.78.220.0 0.0.3.255
+ rule 40 permit ip source 100.79.220.0 0.0.3.255
+#
+acl number 3004
+ description PBR-CGNAT-BOX02-BYPASS
+ rule 5 permit ip destination 100.64.0.0 0.63.255.255
+ rule 6 permit ip destination 10.11.0.128 0.0.0.3
+ rule 7 permit ip destination 138.118.223.250 0
+ rule 8 permit ip destination 10.11.0.160 0.0.0.3
+ rule 9 permit ip destination 138.118.223.251 0
+ rule 15 permit ip destination 10.0.0.0 0.255.255.255
+ rule 20 permit ip destination 172.16.0.0 0.15.255.255
+ rule 35 permit ip destination 100.102.0.0 0.0.3.255
+#
+acl name BYPASS-CGNAT advance
+ rule 5 permit ip source 100.64.0.0 0.63.255.255 destination 100.64.0.0 0.63.255.255
+ rule 6 permit ip source 10.11.0.128 0.0.0.3 destination 10.11.0.128 0.0.0.3
+ rule 7 permit ip source 138.118.223.250 0 destination 138.118.223.250 0
+ rule 8 permit ip source 10.11.0.160 0.0.0.3 destination 10.11.0.160 0.0.0.3
+ rule 9 permit ip source 138.118.223.251 0 destination 138.118.223.251 0
+ rule 10 permit ip source 100.64.0.0 0.63.255.255 destination 138.118.223.250 0
+#
+acl name FROM-CGNAT advance
+ rule 5 permit ip source 100.64.0.0 0.63.255.255
+ rule 10 permit ip source 10.11.0.0 0.0.255.255
+ rule 11 permit ip source 10.11.33.0 0.0.0.15
+ rule 12 permit ip source 138.118.223.224 0.0.0.7
+ rule 14 permit ip source 10.11.80.0 0.0.0.255
+#
+acl name NO_NAT advance
+#
+acl name gerencia number 3999
+ rule 10 permit ip source 45.5.195.223 0
+ rule 11 permit ip source 45.186.224.0 0.0.0.255
+ rule 12 permit ip source 10.11.90.0 0.0.0.255
+ rule 13 permit ip source 10.11.0.0 0.0.0.3
+ rule 14 permit ip source 138.118.223.2 0
+ rule 15 permit ip source 138.118.223.254 0
+ rule 16 permit ip source 138.118.223.127 0
+ rule 17 permit ip source 138.118.223.10 0
+ rule 30 permit ip source 200.108.189.16 0.0.0.7
+ rule 31 permit ip source 10.11.5.200 0.0.0.3
+ rule 32 permit ip source 45.190.136.167 0
+ rule 33 permit ip source 177.130.49.27 0
+ rule 34 permit ip source 10.11.2.0 0.0.0.15
+ rule 35 permit ip source 138.118.223.224 0.0.0.7
+ rule 36 permit ip source 138.118.223.227 0
+ rule 37 permit ip source 10.11.2.0 0.0.0.255
+ rule 38 permit ip source 10.11.0.0 0.0.0.255
+ rule 39 permit ip source 200.108.189.16 0
+ rule 40 permit ip source 138.118.223.250 0
+ rule 41 permit ip source 181.2.111.38 0
+ rule 42 permit ip source 72.14.201.237 0
+ rule 43 permit ip source 138.94.203.246 0
+ rule 98 deny tcp
+ rule 99 deny udp
+#
+traffic classifier BSNET-banda operator and
+#
+traffic classifier BYPASS-CGNAT operator or
+ if-match acl name BYPASS-CGNAT
+#
+traffic classifier C-CGNAT-BOX01 operator or
+ if-match acl 3000
+#               
+traffic classifier C-CGNAT-BOX01-BYPASS operator or
+ if-match acl 3001
+#
+traffic classifier C-CGNAT-BOX02 operator or
+ if-match acl 3003
+#
+traffic classifier C-CGNAT-BOX02-BYPASS operator or
+ if-match acl 3004
+#
+traffic classifier FROM-CGNAT operator or
+ if-match acl name FROM-CGNAT
+#
+traffic classifier NO_NAT operator or
+ if-match acl name NO_NAT
+#
+traffic behavior B-CGNAT-BOX01
+ redirect ip-nexthop 10.255.255.245
+#
+traffic behavior B-CGNAT-BOX01-BYPASS
+#
+traffic behavior B-CGNAT-BOX02
+ redirect ip-nexthop 10.255.255.246
+#               
+traffic behavior B-CGNAT-BOX02-BYPASS
+#
+traffic behavior PASSTHROUGH
+#
+traffic behavior REDIRECT-TO-CGNAT
+ redirect ip-nexthop 10.255.255.242
+#
+traffic policy FROM-CGNAT-REDIRECT-TO-CGNAT
+ share-mode
+ classifier BYPASS-CGNAT behavior PASSTHROUGH precedence 1
+ classifier FROM-CGNAT behavior REDIRECT-TO-CGNAT precedence 2
+ classifier NO_NAT behavior REDIRECT-TO-CGNAT precedence 3
+#
+traffic policy P-CGNAT
+ share-mode
+ classifier C-CGNAT-BOX01-BYPASS behavior B-CGNAT-BOX01-BYPASS precedence 11
+ classifier C-CGNAT-BOX02-BYPASS behavior B-CGNAT-BOX02-BYPASS precedence 12
+ classifier C-CGNAT-BOX01 behavior B-CGNAT-BOX01 precedence 15
+ classifier C-CGNAT-BOX02 behavior B-CGNAT-BOX02 precedence 16
+#
+aaa
+ local-user rodrigo password irreversible-cipher $1c$UU=a)Kq)aI$O]b'X67e(J`Au82<\C=L7uJ1G;GeoXoaA+;6b"{<$
+ local-user rodrigo service-type ssh
+ local-user rodrigo level 3
+ local-user rodrigo state block fail-times 3 interval 5
+ local-user natverk password irreversible-cipher $1c$94P"/EGHhF$"%QK-N:eO8a*sT8G3]l3j8[iQM!j=#Eo{'"Kc8V($
+ local-user natverk service-type ssh
+ local-user natverk level 3
+ local-user natverk state block fail-times 3 interval 5
+ local-user natverkmonitor password irreversible-cipher $1c$5UA@G[Xo0$$(qaF7+i\\XqJex@.K$BZkrJ+.4\|k;ajJrCzJQIX$
+ local-user natverkmonitor service-type ssh
+ local-user natverkmonitor level 2
+ local-user natverkmonitor state block fail-times 3 interval 5
+ local-user haferreira password irreversible-cipher $1c$`jAvY>tOUF$a|@FMD#%$S-&K3O[\cJQ~'AiGb/{&,-kAzH,LZ@Q$
+ local-user haferreira service-type ssh
+ local-user haferreira level 3
+ local-user haferreira state block fail-times 3 interval 5
+ local-user jhonata password irreversible-cipher $1c$+:{iHF}x57$&Ud9T:FJyE0R|GI@l3DQ<j$|E@@S<Rm7p$JM%)>C$
+ local-user jhonata service-type ssh
+ local-user jhonata level 3
+ local-user jhonata state block fail-times 10 interval 1
+ #
+ authentication-scheme default0
+ #
+ authentication-scheme default1
+ #              
+ authentication-scheme default
+  authentication-mode local
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default0
+ #
+ accounting-scheme default1
+ #
+ domain default0
+ #
+ domain default1
+ #
+ domain default_admin
+#
+ospfv3 1
+ router-id 138.118.223.255
+ import-route direct
+ import-route static
+ default-route-advertise always
+ area 0.0.0.0
+#
+interface Vlanif3010
+ description A10-OUT
+ ip address 10.255.255.249 255.255.255.248
+ ospf network-type p2p
+#
+interface Vlanif3011
+ description A10-IN
+ ip address 10.255.255.241 255.255.255.248
+#
+interface Vlanif3012
+ description SINC-A10
+ ip address 10.255.255.1 255.255.255.248
+#
+interface Vlanif4094
+ description GERENCIA-SWT
+ ip address 10.11.0.49 255.255.255.252
+ ip address 10.11.20.1 255.255.255.0 sub
+#
+interface Eth-Trunk0
+ description OSPF-CGNAT
+ ipv6 enable
+ ip address 10.255.63.1 255.255.255.252
+ ip address 10.200.33.1 255.255.255.252 sub
+ ospfv3 1 area 0.0.0.0
+ ospf network-type p2p
+ ip netstream inbound
+ ipv6 netstream inbound
+ mode lacp-static
+ lacp timeout fast
+ statistic enable
+#
+interface Eth-Trunk1
+ description OCA
+ set flow-stat interval 10
+ ipv6 enable
+ ip address 138.118.223.53 255.255.255.252
+ ipv6 address 2804:2550:800C::1/126
+ mode lacp-static
+ statistic enable
+#
+interface Eth-Trunk2
+ description PTT-20GB
+ ipv6 enable
+ mac-address 488f-5a7c-b8b6
+ load-balance packet-all
+ statistic enable
+#               
+interface Eth-Trunk3
+ portswitch
+ description LACP-ABA<>CMT->PROVECOM
+ port trunk allow-pass vlan 10 21 to 28 30 34 to 36 41 to 44 51 to 58 71 to 74 79 198 210 to 211
+ port trunk allow-pass vlan 220 230 240 250 260 262 to 265 267 270 303 to 304 318
+ port trunk allow-pass vlan 321 325 to 326 353 to 357 361 to 366 368 to 380 382 to 391 405 to 454 460 to 462 464 480
+ port trunk allow-pass vlan 701 to 708 777 905 to 906 1006 1011 to 1014 1025 to 1033 1036 to 1043 1111 1201 to 1204 1210 to 1214
+ port trunk allow-pass vlan 1216 1219 to 1220 2000 3010 3012 4094
+ mode lacp-static
+ load-balance src-dst-ip
+ lacp timeout fast
+ lacp preempt enable
+#
+interface Eth-Trunk3.2010
+ vlan-type dot1q 2010
+ description OSPF-PROVECOM-CMT
+ ipv6 enable
+ ip address 10.11.0.249 255.255.255.252
+ ipv6 address auto link-local
+ statistic enable
+ traffic-policy P-CGNAT inbound
+ ospfv3 1 area 0.0.0.0
+ ospfv3 network-type p2p
+ ospf network-type p2p
+#
+interface Eth-Trunk4
+ description FNA
+ set flow-stat interval 10
+ ipv6 enable
+ ip address 138.118.223.13 255.255.255.252
+ ipv6 address 2804:2550:800F::1/126
+ mode lacp-static
+ statistic enable
+#
+interface Eth-Trunk10
+ portswitch
+ description A10-2
+ port link-type trunk
+ port trunk allow-pass vlan 3010 to 3012
+ mode lacp-static
+#
+interface Eth-Trunk11
+ portswitch
+ description A10-1
+ port link-type trunk
+ port trunk allow-pass vlan 3010 to 3012
+ mode lacp-static
+#
+interface Eth-Trunk40
+ portswitch
+ description BNG
+ port link-type trunk
+ port trunk allow-pass vlan 10 21 to 28 30 41 to 44 51 to 58 71 to 74 79 100 110 120
+ port trunk allow-pass vlan 160 170 200 210 to 211 220 230 240 250 260 262 to 265
+ port trunk allow-pass vlan 270 303 to 304 318 321 325 to 326 353 to 357 361 to 366 368 to 380 382 to 391 405 to 454
+ port trunk allow-pass vlan 460 to 462 464 480 530 540 550 701 to 708 777 1006 1011 to 1014
+ port trunk allow-pass vlan 1025 to 1033 1036 to 1043 1084 1111 1201 to 1204 1210 to 1214 1219 to 1220 2000
+#
+interface GigabitEthernet0/0/0
+ undo shutdown
+ ip address 192.168.1.2 255.255.255.0
+ ip address 192.168.0.3 255.255.255.0 sub
+#
+interface GigabitEthernet0/1/0
+ undo shutdown
+ eth-trunk 0
+#
+interface GigabitEthernet0/1/1
+ portswitch     
+ description martinsnet
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 36
+#
+interface GigabitEthernet0/1/1.3022
+ vlan-type dot1q 3022
+ description MARTINS.NET 500MB
+ ipv6 enable
+ ip address 172.16.31.49 255.255.255.252
+ ipv6 address 2804:2550:8010::1/126
+ statistic enable
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#
+interface GigabitEthernet0/1/2
+ description SWITCH-ABAETETUBA-CGNAT
+ undo shutdown
+ eth-trunk 0
+#
+interface GigabitEthernet0/1/3
+ description TRANSPORTE-ABA<>CMT->PROVECOM-01
+ undo shutdown  
+#
+interface GigabitEthernet0/1/4
+ description GGC
+ undo shutdown
+ ipv6 enable
+ ip address 138.118.223.129 255.255.255.192
+ ip address 10.11.0.90 255.255.255.252 sub
+ ipv6 address 2804:2550:1:8888::1/64
+ ip netstream inbound
+ ipv6 netstream inbound
+#
+interface GigabitEthernet0/1/5
+ description PROXMOX
+ undo shutdown
+ ipv6 enable
+ ip address 10.11.2.1 255.255.255.240
+ ip address 10.11.33.1 255.255.255.240 sub
+#
+interface GigabitEthernet0/1/6
+ description TRANSPORTE-ABA<>CMT->BIT-PROVECOM-02
+ undo shutdown
+#
+interface GigabitEthernet0/1/7
+ portswitch
+ description BS-Claro-Transporte
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 1000 to 1001
+#
+interface GigabitEthernet0/1/8
+ undo shutdown
+ eth-trunk 0
+#
+interface GigabitEthernet0/1/9
+ description PEER-ELTEL-600MB
+ undo shutdown
+ ip address 172.31.1.9 255.255.255.252
+ ip address 138.118.223.205 255.255.255.252 sub
+ qos car cir 614400 cbs 614400 green pass red discard inbound
+ qos car cir 614400 cbs 614400 green pass red discard outbound
+#
+interface GigabitEthernet0/1/10
+ portswitch
+ description BSNET
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 198 1001 3012
+#
+interface GigabitEthernet0/1/10.3001
+ vlan-type dot1q 3001
+ description PEER-BSNET-ABAETETUBA
+ ipv6 enable
+ ip address 172.16.31.1 255.255.255.252
+ ipv6 address 2804:2550:800A::1/126
+ statistic enable
+ qos-profile BSNET inbound identifier none 
+ qos-profile BSNET outbound identifier none 
+#
+interface GigabitEthernet0/1/11
+ description OCA1
+ undo shutdown
+ eth-trunk 1
+#
+interface GigabitEthernet0/1/12
+ description OCA2
+ undo shutdown
+ eth-trunk 1
+#
+interface GigabitEthernet0/1/13
+ description OCA3
+ undo shutdown
+ eth-trunk 1
+#
+interface GigabitEthernet0/1/14
+ portswitch
+ description BITE BYTE
+ undo shutdown
+ port trunk allow-pass vlan 34 to 35
+#
+interface GigabitEthernet0/1/15
+ portswitch
+ description CTE-TRANSPORTE
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2516 3035
+#
+interface GigabitEthernet0/1/16
+ undo shutdown
+ eth-trunk 4
+#
+interface GigabitEthernet0/1/17
+ undo shutdown  
+ eth-trunk 4
+#
+interface GigabitEthernet0/1/18
+ undo shutdown
+ eth-trunk 4
+#
+interface 25GE0/1/46
+ portswitch
+ description SWT-IGM-PROVISORIO
+ undo shutdown
+ port link-type trunk
+#
+interface 40GE0/1/50
+ undo shutdown
+ eth-trunk 10
+#
+interface 40GE0/1/55
+ undo shutdown
+ eth-trunk 11
+#
+interface 100GE0/1/48
+ undo shutdown
+ eth-trunk 40   
+#
+interface 100GE0/1/51
+ fec-eth disable
+ portswitch
+ description SWT-IGM
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 100 110 120 160 170 530 540 550 1084 2516
+ port trunk allow-pass vlan 3035
+#
+interface 100GE0/1/51.2012
+ vlan-type dot1q 2012
+ description BRAS8-VILAS
+ ipv6 enable
+ ip address 10.11.0.161 255.255.255.252
+ ip address 10.120.1.1 255.255.255.252 sub
+ ipv6 address 2804:2550:FF::13A/124
+ statistic enable
+ ospfv3 1 area 0.0.0.0
+ ospfv3 network-type p2p
+ ospf network-type p2p
+#
+interface 100GE0/1/51.2013
+ vlan-type dot1q 2013
+ description HJK-NET-1.5GB
+ ip address 10.252.1.1 255.255.255.252
+ statistic enable
+ qos car cir 1536000 cbs 1536000 green pass red discard inbound
+ qos car cir 1536000 cbs 1536000 green pass red discard outbound
+#
+interface 100GE0/1/51.2015
+ vlan-type dot1q 2015
+ description ACAINET-IGM-1GB
+ ip address 10.252.1.21 255.255.255.252
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/51.3020
+ vlan-type dot1q 3020
+ description BITE-BYTE-500MB
+ ip address 10.252.1.41 255.255.255.252
+ statistic enable
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#               
+interface 100GE0/1/51.4030
+ vlan-type dot1q 4030
+ description APNET-2G
+ ipv6 enable
+ ip address 172.16.31.105 255.255.255.252
+ ipv6 address 2804:2550:800D::1/126
+ statistic enable
+ qos car cir 2048000 cbs 2048000 green pass red discard inbound
+ qos car cir 2048000 cbs 2048000 green pass red discard outbound
+#
+interface 100GE0/1/51.4036
+ vlan-type dot1q 4036
+ description OSPF-ABT-IGM-CMT
+ ipv6 enable
+ ip address 10.11.0.241 255.255.255.252
+ ipv6 address 2804:2550:FF::4035/124
+ statistic enable
+ ospfv3 1 area 0.0.0.0
+ ospfv3 network-type p2p
+ ospf network-type p2p
+#
+interface 100GE0/1/52
+ fec-eth disable
+ description TRANSP PROVECOM
+ undo shutdown
+ eth-trunk 3
+#
+interface 100GE0/1/53
+ undo shutdown
+#
+interface 100GE0/1/53.931
+ vlan-type dot1q 931
+ description PEER-ONLINe
+ ip address 10.244.100.46 255.255.255.252
+ statistic enable
+ ip netstream inbound
+ ip netstream outbound
+#
+interface 100GE0/1/53.932
+ vlan-type dot1q 932
+ description v6-ONLINE
+ ipv6 enable
+ ipv6 address 2804:2468:3004::26:DED:E/126
+ statistic enable
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+#
+interface 100GE0/1/53.1696
+ vlan-type dot1q 1696
+ description PTT-FOR-v4
+ ip address 45.68.74.8 255.255.248.0
+ statistic enable
+ arp expire-time 14400
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+ arp rate-limit 0
+#
+interface 100GE0/1/53.1697
+ vlan-type dot1q 1697
+ description PTT-FOR-v6
+ ipv6 enable
+ ipv6 address 2001:12F8:0:9::146:8/64
+ statistic enable
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+#
+interface 100GE0/1/53.2598
+ vlan-type dot1q 2598
+ description PTT-BEL-v4
+ ip address 187.16.195.23 255.255.255.0
+ statistic enable
+ arp expire-time 14400
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+ mac-address 488f-5a7c-b8b6
+ arp rate-limit 0
+#
+interface 100GE0/1/53.2599
+ vlan-type dot1q 2599
+ description PTT-BEL-v6
+ ipv6 enable
+ ipv6 address 2001:12F8:0:18::23/64
+ statistic enable
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+ mac-address 488f-5a7c-b8b6
+#
+interface 100GE0/1/53.2893
+ vlan-type dot1q 2893
+ description PTT-SP-v4
+ ip address 187.16.210.232 255.255.240.0
+ ip address 10.50.10.1 255.255.255.252 sub
+ statistic enable
+ arp expire-time 14400
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+ arp rate-limit 0
+#
+interface 100GE0/1/53.2894
+ vlan-type dot1q 2894
+ description PTT-SP-v6
+ ipv6 enable
+ ipv6 address 2001:12F8::210:232/64
+ statistic enable
+ arp expire-time 14400
+ ip netstream inbound
+ ip netstream outbound
+ ipv6 netstream inbound
+ ipv6 netstream outbound
+ arp rate-limit 0
+#
+interface 100GE0/1/54
+ fec-eth disable
+ portswitch
+ description SWT-MOJU
+ undo shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 1000 to 1001 4094
+#
+interface 100GE0/1/54.2011
+ vlan-type dot1q 2011
+ description FIBER SERVICES 500MB
+ ip address 10.252.1.25 255.255.255.252
+ statistic enable
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#
+interface 100GE0/1/54.2014
+ vlan-type dot1q 2014
+ description JEFFERSON.NET-500MB
+ ip address 10.252.1.13 255.255.255.252
+ statistic enable
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#
+interface 100GE0/1/54.2216
+ vlan-type dot1q 2216
+ description PROVERTEC
+ ip address 172.16.31.53 255.255.255.252
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#
+interface 100GE0/1/54.2218
+ vlan-type dot1q 2218
+ description ASPNET-1GB
+ ip address 10.252.1.49 255.255.255.252
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/54.3014
+ vlan-type dot1q 3014
+ description ARNAUD-TECH-1GB
+ ipv6 enable
+ ip address 10.11.5.81 255.255.255.252
+ ipv6 address 2804:2550:800B::1/126
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/54.3017
+ vlan-type dot1q 3017
+ description VICNET-10GB
+ ipv6 enable
+ ip address 138.118.223.193 255.255.255.252
+ ipv6 address 2804:2550:FF::3016:1/126
+ statistic enable
+ qos car cir 20480000 cbs 20480000 green pass red discard inbound
+ qos car cir 20480000 cbs 20480000 green pass red discard outbound
+#
+interface 100GE0/1/54.3018
+ vlan-type dot1q 3018
+ description WEBNET-VALDO-700MB
+ ip address 10.252.1.5 255.255.255.252
+ statistic enable
+ qos car cir 716800 cbs 716800 green pass red discard inbound
+ qos car cir 716800 cbs 716800 green pass red discard outbound
+#
+interface 100GE0/1/54.3019
+ vlan-type dot1q 3019
+ description VICNET-20GB
+ ipv6 enable
+ ip address 10.20.33.1 255.255.255.252
+ ipv6 address 2804:2550:FF::3016:5/126
+ statistic enable
+ qos car cir 20480000 cbs 20480000 green pass red discard inbound
+ qos car cir 20480000 cbs 20480000 green pass red discard outbound
+#
+interface 100GE0/1/54.3021
+ vlan-type dot1q 3021
+ description CS-TELECOM 1GB
+ ip address 10.252.1.45 255.255.255.252
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/54.3022
+ vlan-type dot1q 3022
+ description LINK-NET-02-700MB
+ ip address 10.252.1.53 255.255.255.252
+ statistic enable
+ qos car cir 716800 cbs 716800 green pass red discard inbound
+ qos car cir 716800 cbs 716800 green pass red discard outbound
+#
+interface 100GE0/1/54.3023
+ vlan-type dot1q 3023
+ description XTELECOM-300MB
+ ip address 10.252.1.57 255.255.255.252
+ statistic enable
+ qos car cir 307200 cbs 307200 green pass red discard inbound
+ qos car cir 307200 cbs 307200 green pass red discard outbound
+#
+interface 100GE0/1/54.3051
+ vlan-type dot1q 3051
+ description CONNECT-CAMETA-7GB
+ ipv6 enable
+ ip address 172.16.31.133 255.255.255.252
+ ipv6 address 2804:2550:FF::3051:1/126
+ statistic enable
+ qos car cir 7168000 cbs 7168000 green pass red discard inbound
+ qos car cir 7168000 cbs 7168000 green pass red discard outbound
+#
+interface 100GE0/1/54.4001
+ vlan-type dot1q 4001
+ description BRAS14-LIMOEIRO-AJURU-3GB
+ ipv6 enable
+ ip address 10.11.0.101 255.255.255.252
+ ipv6 address 2804:2550:FF::23A/124
+ statistic enable
+ traffic-policy FROM-CGNAT-REDIRECT-TO-CGNAT inbound
+ ospfv3 1 area 0.0.0.0
+ ospfv3 network-type p2p
+ ospf network-type p2p
+ qos car cir 3072000 cbs 3072000 green pass red discard inbound
+ qos car cir 3072000 cbs 3072000 green pass red discard outbound
+#
+interface 100GE0/1/54.4002
+ vlan-type dot1q 4002
+ description PCTelecom-100MB
+ ip address 10.252.1.29 255.255.255.252
+ statistic enable
+ qos car cir 102400 cbs 102400 green pass red discard inbound
+ qos car cir 102400 cbs 102400 green pass red discard outbound
+#
+interface 100GE0/1/54.4003
+ vlan-type dot1q 4003
+ description PEER-BSNET
+ ipv6 enable
+ ip address 172.16.31.5 255.255.255.252
+ ipv6 address 2804:2550:8007::1/126
+ statistic enable
+ qos-profile BSNET inbound identifier none 
+ qos-profile BSNET outbound identifier none 
+#
+interface 100GE0/1/54.4018
+ vlan-type dot1q 4018
+ description LINKNET-700MB
+ ip address 10.252.1.17 255.255.255.252
+ statistic enable
+ qos car cir 716800 cbs 716800 green pass red discard inbound
+ qos car cir 716800 cbs 716800 green pass red discard outbound
+#
+interface 100GE0/1/54.4019
+ vlan-type dot1q 4019
+ description JS-JUBANET-1GB
+ ip address 10.252.1.9 255.255.255.252
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/54.4020
+ vlan-type dot1q 4020
+ description OSPF-OEIRAS
+ ipv6 enable
+ ip address 10.11.0.122 255.255.255.252
+ ip address 198.16.1.1 255.255.255.252 sub
+ ipv6 address 2804:2550:FF::16A/124
+ statistic enable
+ traffic-policy FROM-CGNAT-REDIRECT-TO-CGNAT inbound
+ ospfv3 1 area 0.0.0.0
+ ospfv3 network-type p2p
+ ospf network-type p2p
+#
+interface 100GE0/1/54.4031
+ vlan-type dot1q 4031
+ description DOMINIO-150MB
+ ip address 172.16.31.109 255.255.255.252
+ statistic enable
+ qos car cir 1024000 cbs 1024000 green pass red discard inbound
+ qos car cir 1024000 cbs 1024000 green pass red discard outbound
+#
+interface 100GE0/1/54.4032
+ vlan-type dot1q 4032
+ description CEPAI-1GB
+ ipv6 enable
+ ip address 172.16.31.117 255.255.255.252
+ ipv6 address 2804:2550:800E::1/126
+ statistic enable
+ qos car cir 20480000 cbs 20480000 green pass red discard inbound
+ qos car cir 20480000 cbs 20480000 green pass red discard outbound
+#
+interface 100GE0/1/54.4033
+ vlan-type dot1q 4033
+ description Weblink-500M
+ ip address 138.118.222.73 255.255.255.252
+ statistic enable
+ qos car cir 512000 cbs 512000 green pass red discard inbound
+ qos car cir 512000 cbs 512000 green pass red discard outbound
+#
+interface LoopBack0
+ ip address 192.168.88.55 255.255.255.255
+ ip address 10.1.1.1 255.255.255.255 sub
+ ip address 38.43.64.0 255.255.255.255 sub
+#
+interface LoopBack1
+ ipv6 enable
+ ip address 138.118.223.255 255.255.255.255
+ ip address 10.11.11.0 255.255.255.255 sub
+ ipv6 address 2804:2550::255/128
+ ospfv3 1 area 0.0.0.0
+#
+interface Virtual-Ethernet0/1/201.100
+ vlan-type dot1q 100
+ description WAN-BNG
+ ipv6 enable
+ ip address 10.2.2.2 255.255.255.252
+ ipv6 address 2804:2550:FF::100:1/124
+ traffic-policy P-CGNAT inbound
+ ospf network-type p2p
+ ip netstream inbound
+ ipv6 netstream inbound
+#
+interface NULL0
+#
+bgp 264273      
+ router-id 138.118.220.1
+ undo check-first-as
+ peer 10.0.0.125 as-number 61832
+ peer 10.0.0.125 description FullRouting-Wirelink-V4
+ peer 10.0.0.125 ebgp-max-hop 10
+ peer 10.255.0.20 as-number 264221
+ peer 10.255.0.20 description v4-ONLINE-FULL
+ peer 10.255.0.20 ebgp-max-hop 15
+ peer 10.255.255.250 as-number 264273
+ peer 10.255.255.250 description A10-antigo
+ peer 10.255.255.251 as-number 264273
+ peer 10.255.255.251 description A10-novo
+ peer 45.68.72.214 as-number 6939
+ peer 45.184.144.214 as-number 6939
+ peer 45.184.144.214 description HE-Fortaleza
+ peer 45.184.144.252 as-number 20121
+ peer 45.184.144.252 description lgc.fortaleza.ce.ix.br
+ peer 45.184.144.253 as-number 26162
+ peer 45.184.144.253 description rs1.fortaleza.ce.ix.br
+ peer 45.184.144.254 as-number 26162
+ peer 45.184.144.254 description rs2.fortaleza.ce.ix.br
+ peer 138.118.223.54 as-number 40027
+ peer 138.118.223.62 as-number 264578
+ peer 138.118.223.62 description BSNET
+ peer 138.118.223.190 as-number 11344
+ peer 138.118.223.190 description GGC
+ peer 138.118.223.194 as-number 266911
+ peer 138.118.223.194 description VICNET
+ peer 138.118.223.222 as-number 264985
+ peer 138.118.223.222 description lunetech
+ peer 172.16.31.2 as-number 264578
+ peer 172.16.31.50 as-number 266101
+ peer 172.16.31.50 description v4-martinsnet
+ peer 172.31.9.153 as-number 61832
+ peer 172.31.9.153 description Wirelink-V4
+ peer 187.16.195.252 as-number 20121
+ peer 187.16.195.252 description lgc.belem.pa.ix.br
+ peer 187.16.195.253 as-number 26162
+ peer 187.16.195.253 description rs1.belem.pa.ix.br
+ peer 187.16.195.254 as-number 26162
+ peer 187.16.195.254 description rs2.belem.pa.ix.br
+ peer 187.16.216.252 as-number 20121
+ peer 187.16.216.252 description lgc.saopaulo.sp.ix.br
+ peer 187.16.216.253 as-number 26162
+ peer 187.16.216.253 description rs1.saopaulo.sp.ix.br
+ peer 187.16.216.254 as-number 26162
+ peer 187.16.216.254 description rs2.saopaulo.sp.ix.br
+ peer 2001:12F8::252 as-number 20121
+ peer 2001:12F8::252 description lgc.saopaulo.sp.ix.br
+ peer 2001:12F8::253 as-number 26162
+ peer 2001:12F8::253 description rs1.saopaulo.sp.ix.br
+ peer 2001:12F8::254 as-number 26162
+ peer 2001:12F8::254 description rs2.saopaulo.sp.ix.br
+ peer 2001:12F8::223:253 as-number 26162
+ peer 2001:12F8::223:253 description rs3.saopaulo.sp.ix.br
+ peer 2001:12F8::223:254 as-number 26162
+ peer 2001:12F8::223:254 description rs4.saopaulo.sp.ix.br
+ peer 2001:12F8:0:9::252 as-number 20121
+ peer 2001:12F8:0:9::252 description lgc.fortaleza.ce.ix.br
+ peer 2001:12F8:0:9::253 as-number 26162
+ peer 2001:12F8:0:9::253 description rs1.fortaleza.ce.ix.br
+ peer 2001:12F8:0:9::254 as-number 26162
+ peer 2001:12F8:0:9::254 description rs2.fortaleza.ce.ix.br
+ peer 2001:12F8:0:18::252 as-number 20121
+ peer 2001:12F8:0:18::252 description lgc.belem.pa.ix.br
+ peer 2001:12F8:0:18::253 as-number 26162
+ peer 2001:12F8:0:18::253 description rs1.belem.pa.ix.br
+ peer 2001:12F8:0:18::254 as-number 26162
+ peer 2001:12F8:0:18::254 description rs1.belem.pa.ix.br
+ peer 2804:1A04:0:1::3 as-number 61832
+ peer 2804:1A04:0:1::3 description Wirelink-Full-V6
+ peer 2804:1A04:0:1::3 ebgp-max-hop 10
+ peer 2804:1A04:0:3::8FD as-number 61832
+ peer 2804:1A04:0:3::8FD description Wirelink-V6
+ peer 2804:1B04:16::1 as-number 53048
+ peer 2804:2468::C20 as-number 264221
+ peer 2804:2468::C20 description V6-ONLINE-FULL
+ peer 2804:2468::C20 ebgp-max-hop 15
+ peer 2804:2550:1:8888::FFFE as-number 11344
+ peer 2804:2550:1:8888::FFFE description GGC-V6
+ peer 2804:2550:8006::2 as-number 264985
+ peer 2804:2550:8006::2 description LUNETECH-V6
+ peer 2804:2550:8007::2 as-number 264578
+ peer 2804:2550:8007::2 description BSNET-v6
+ peer 2804:2550:8008::2 as-number 264578
+ peer 2804:2550:8008::2 description BSNET-v6
+ peer 2804:2550:800C::2 as-number 40027
+ peer 2804:2550:8010::2 as-number 266101
+ peer 2804:2550:8010::2 description v6-martins
+ group A10 internal
+ group BSNET-3011 external
+ peer 172.16.31.6 as-number 264578
+ peer 172.16.31.6 group BSNET-3011
+ peer 172.16.31.6 description BSNET
+ group BSNET-ABA-V6 external
+ peer BSNET-ABA-V6 as-number 264578
+ peer 2804:2550:800A::2 as-number 264578
+ peer 2804:2550:800A::2 group BSNET-ABA-V6
+ peer 2804:2550:800A::2 description BSNET-ABA-V6
+ group BSNET-IGM-V4 external
+ peer BSNET-IGM-V4 as-number 264578
+ group BSNET-IGM-V6 external
+ peer BSNET-IGM-V6 as-number 264578
+ group BSNET-V4 external
+ peer BSNET-V4 as-number 264578
+ group BSNET-V6 external
+ peer BSNET-V6 as-number 264578
+ group BSNET-abt-V4 external
+ peer BSNET-abt-V4 as-number 264578
+ group FNA external
+ peer 138.118.223.80 as-number 63293
+ peer 138.118.223.80 group FNA
+ peer 138.118.223.80 description FNA
+ peer 138.118.223.80 ebgp-max-hop 10
+ peer 138.118.223.80 connect-interface Eth-Trunk4
+ group GGC-V4 external
+ peer GGC-V4 as-number 11344
+ peer GGC-V4 connect-interface GigabitEthernet0/1/4
+ group GGC-V6 external
+ peer GGC-V6 as-number 11344
+ peer GGC-V6 connect-interface GigabitEthernet0/1/4
+ group LUNETECH-V4 external
+ peer LUNETECH-V4 as-number 264985
+ peer 172.16.31.10 as-number 264985
+ peer 172.16.31.10 group LUNETECH-V4
+ peer 172.16.31.10 description lunetech
+ group LUNETECH-V6 external
+ peer LUNETECH-V6 as-number 264985
+ group V4-Akamai external
+ peer 45.68.73.166 as-number 20940
+ peer 45.68.73.166 group V4-Akamai
+ peer 45.184.144.79 as-number 20940
+ peer 45.184.144.79 group V4-Akamai
+ peer 45.184.145.166 as-number 20940
+ peer 45.184.145.166 group V4-Akamai
+ peer 187.16.220.8 as-number 20940
+ peer 187.16.220.8 group V4-Akamai
+ peer 187.16.223.244 as-number 20940
+ peer 187.16.223.244 group V4-Akamai
+ peer 187.16.223.245 as-number 20940
+ peer 187.16.223.245 group V4-Akamai
+ group V4-Apple external
+ peer 187.16.213.181 as-number 714
+ peer 187.16.213.181 group V4-Apple
+ peer 187.16.213.182 as-number 714
+ peer 187.16.213.182 group V4-Apple
+ group V4-CloudflareSP external
+ peer 45.68.72.137 as-number 13335
+ peer 45.68.72.137 group V4-CloudflareSP
+ peer 45.184.144.137 as-number 13335
+ peer 45.184.144.137 group V4-CloudflareSP
+ group V4-Globo external
+ peer 45.68.72.240 as-number 28604
+ peer 45.68.72.240 group V4-Globo
+ peer 45.68.72.241 as-number 28604
+ peer 45.68.72.241 group V4-Globo
+ peer 45.184.144.240 as-number 28604
+ peer 45.184.144.240 group V4-Globo
+ peer 45.184.144.241 as-number 28604
+ peer 45.184.144.241 group V4-Globo
+ group V4-META-FO external
+ peer 45.68.72.53 as-number 32934
+ peer 45.68.72.53 group V4-META-FO
+ peer 45.68.72.79 as-number 32934
+ peer 45.68.72.79 group V4-META-FO
+ peer 45.68.72.106 as-number 32934
+ peer 45.68.72.106 group V4-META-FO
+ peer 45.68.74.36 as-number 32934
+ peer 45.68.74.36 group V4-META-FO
+ peer 45.68.74.37 as-number 32934
+ peer 45.68.74.37 group V4-META-FO
+ peer 45.184.144.53 as-number 32934
+ peer 45.184.144.53 group V4-META-FO
+ peer 45.184.144.106 as-number 32934
+ peer 45.184.144.106 group V4-META-FO
+ peer 45.184.146.36 as-number 32934
+ peer 45.184.146.36 group V4-META-FO
+ peer 45.184.146.37 as-number 32934
+ peer 45.184.146.37 group V4-META-FO
+ group V4-META-SP external
+ peer 187.16.218.82 as-number 32934
+ peer 187.16.218.82 group V4-META-SP
+ peer 187.16.220.240 as-number 32934
+ peer 187.16.220.240 group V4-META-SP
+ peer 187.16.222.60 as-number 32934
+ peer 187.16.222.60 group V4-META-SP
+ peer 187.16.222.61 as-number 32934
+ peer 187.16.222.61 group V4-META-SP
+ group V4-TWITCH external
+ peer 187.16.221.243 as-number 46489
+ peer 187.16.221.243 group V4-TWITCH
+ peer 187.16.221.244 as-number 46489
+ peer 187.16.221.244 group V4-TWITCH
+ peer 187.16.222.239 as-number 46489
+ peer 187.16.222.239 group V4-TWITCH
+ peer 187.16.222.240 as-number 46489
+ peer 187.16.222.240 group V4-TWITCH
+ group V4-ubisoft external
+ peer 187.16.220.229 as-number 49544
+ peer 187.16.220.229 group V4-ubisoft
+ group V6-Akamai external
+ peer 2001:12F8::220:8 as-number 20940
+ peer 2001:12F8::220:8 group V6-Akamai
+ group V6-Apple external
+ peer 2001:12F8::213:181 as-number 714
+ peer 2001:12F8::213:181 group V6-Apple
+ peer 2001:12F8::213:182 as-number 714
+ peer 2001:12F8::213:182 group V6-Apple
+ group V6-CloudflareSP external
+ peer 2001:12F8:0:9::137 as-number 13335
+ peer 2001:12F8:0:9::137 group V6-CloudflareSP
+ group V6-FNA external
+ peer 2804:2550:FF:1::10 as-number 63293
+ peer 2804:2550:FF:1::10 group V6-FNA
+ peer 2804:2550:FF:1::10 description V6-FNA
+ peer 2804:2550:FF:1::10 ebgp-max-hop 10
+ peer 2804:2550:FF:1::10 connect-interface Eth-Trunk4
+ group V6-GLOBO external
+ peer V6-GLOBO as-number 28604
+ peer 2001:12F8::218:72 as-number 28604
+ peer 2001:12F8::218:72 group V6-GLOBO
+ peer 2001:12F8::219:62 as-number 28604
+ peer 2001:12F8::219:62 group V6-GLOBO
+ peer 2001:12F8:0:9::240 as-number 28604
+ peer 2001:12F8:0:9::240 group V6-GLOBO
+ peer 2001:12F8:0:9::241 as-number 28604
+ peer 2001:12F8:0:9::241 group V6-GLOBO
+ group V6-META-FO external
+ peer 2001:12F8:0:9::53 as-number 32934
+ peer 2001:12F8:0:9::53 group V6-META-FO
+ peer 2001:12F8:0:9::106 as-number 32934
+ peer 2001:12F8:0:9::106 group V6-META-FO
+ peer 2001:12F8:0:9::146:36 as-number 32934
+ peer 2001:12F8:0:9::146:36 group V6-META-FO
+ peer 2001:12F8:0:9::146:37 as-number 32934
+ peer 2001:12F8:0:9::146:37 group V6-META-FO
+ group V6-META-SP external
+ peer 2001:12F8::218:82 as-number 32934
+ peer 2001:12F8::218:82 group V6-META-SP
+ peer 2001:12F8::220:240 as-number 32934
+ peer 2001:12F8::220:240 group V6-META-SP
+ peer 2001:12F8::222:60 as-number 32934
+ peer 2001:12F8::222:60 group V6-META-SP
+ peer 2001:12F8::222:61 as-number 32934
+ peer 2001:12F8::222:61 group V6-META-SP
+ group V6-TWITCH-SP external
+ peer 2001:12F8::221:243 as-number 46489
+ peer 2001:12F8::221:243 group V6-TWITCH-SP
+ peer 2001:12F8::221:244 as-number 46489
+ peer 2001:12F8::221:244 group V6-TWITCH-SP
+ peer 2001:12F8::222:239 as-number 46489
+ peer 2001:12F8::222:239 group V6-TWITCH-SP
+ peer 2001:12F8::222:240 as-number 46489
+ peer 2001:12F8::222:240 group V6-TWITCH-SP
+ group V6-ubisoft external
+ peer 2001:12F8::220:229 as-number 49544
+ peer 2001:12F8::220:229 group V6-ubisoft
+ group v4-CTE external
+ peer v4-CTE as-number 53048
+ group v4-HE-Fortaleza external
+ group v4-LG-BEL-FO external
+ peer v4-LG-BEL-FO as-number 20121
+ group v4-LG-SP external
+ peer v4-LG-SP as-number 20121
+ group v4-Netflix external
+ peer v4-Netflix as-number 40027
+ group v4-ONLINE external
+ peer 10.244.100.45 as-number 264221
+ peer 10.244.100.45 group v4-ONLINE
+ peer 10.244.100.45 description ONLINE
+ group v4-PTT-BEL-FOR external
+ peer v4-PTT-BEL-FOR as-number 26162
+ peer 45.68.79.253 as-number 26162
+ peer 45.68.79.253 group v4-PTT-BEL-FOR
+ peer 45.68.79.253 description rs1.fortaleza.ce.ix.br
+ peer 45.68.79.254 as-number 26162
+ peer 45.68.79.254 group v4-PTT-BEL-FOR
+ peer 45.68.79.254 description rs2.fortaleza.ce.ix.br
+ group v4-PTT-SP external
+ peer v4-PTT-SP as-number 26162
+ group v4-WIRELINK external
+ peer v4-WIRELINK as-number 61832
+ peer v4-WIRELINK ebgp-max-hop 10
+ peer v4-WIRELINK ignore
+ group v4-rf-wirelink external
+ peer v4-rf-wirelink as-number 61832
+ group v4-vicnet external
+ peer 10.20.33.2 as-number 266911
+ peer 10.20.33.2 group v4-vicnet
+ peer 10.20.33.2 description vicnet-oeiras
+ group v6-CTE external
+ peer v6-CTE as-number 53048
+ group v6-HE-Fortaleza external
+ peer 2001:12F8:0:9::214 as-number 6939
+ peer 2001:12F8:0:9::214 group v6-HE-Fortaleza
+ group v6-LG-BEL-FO external
+ peer v6-LG-BEL-FO as-number 20121
+ group v6-LG-SP external
+ peer v6-LG-SP as-number 20121
+ group v6-Netflix external
+ peer v6-Netflix as-number 40027
+ group v6-ONLINE external
+ peer v6-ONLINE as-number 264221
+ peer 2804:2468:3004::26:DED:D as-number 264221
+ peer 2804:2468:3004::26:DED:D group v6-ONLINE
+ peer 2804:2468:3004::26:DED:D description v6-ONLINE
+ group v6-PTT-BEL-FOR external
+ peer v6-PTT-BEL-FOR as-number 26162
+ group v6-PTT-SP external
+ peer v6-PTT-SP as-number 26162
+ group v6-WIRELINK external
+ peer v6-WIRELINK as-number 61832
+ peer v6-WIRELINK ignore
+ group v6-vicnet external
+ peer 2804:2550:FF::3016:2 as-number 266911
+ peer 2804:2550:FF::3016:2 group v6-vicnet
+ peer 2804:2550:FF::3016:2 description v6-Vicnet
+ peer 2804:2550:FF::3016:6 as-number 266911
+ peer 2804:2550:FF::3016:6 group v6-vicnet
+ peer 2804:2550:FF::3016:6 description v6-vicnet-oeiras
+ #
+ ipv4-family unicast
+  undo synchronization
+  network 38.43.64.0 255.255.248.0
+  network 38.43.64.0 255.255.252.0
+  network 100.64.0.0 255.192.0.0
+  network 138.118.220.0 255.255.252.0
+  network 138.118.220.0 255.255.254.0
+  network 138.118.220.0 255.255.255.0
+  network 138.118.221.0 255.255.255.0
+  network 138.118.222.0 255.255.254.0
+  network 138.118.222.0 255.255.255.0
+  network 138.118.223.0 255.255.255.0
+  import-route ospf 1
+  undo peer V6-CloudflareSP enable
+  undo peer v6-CTE enable
+  undo peer v6-Netflix enable
+  undo peer v6-vicnet enable
+  undo peer v6-ONLINE enable
+  peer 10.255.0.20 enable
+  peer 10.255.0.20 route-policy v4-ONLINE-Full-IN import
+  peer 10.255.0.20 route-policy v4-ONLINE-Full-OUT export
+  peer 10.255.0.20 next-hop-local
+  peer 45.68.72.214 enable
+  peer 172.16.31.50 enable
+  peer 172.16.31.50 route-policy v4-martinsnet-in import
+  peer 172.16.31.50 route-policy v4-martinsnet-out export
+  peer 172.16.31.50 next-hop-local
+  peer A10 enable
+  peer A10 route-policy A10-in import
+  peer A10 route-policy A10-out export
+  peer A10 default-route-advertise
+  peer 10.255.255.250 enable
+  peer 10.255.255.250 group A10
+  peer 10.255.255.251 enable
+  peer 10.255.255.251 group A10
+  peer BSNET-3011 enable
+  peer BSNET-3011 route-policy BSNET-V4-IN import
+  peer BSNET-3011 route-policy BSNET-V4-OUT export
+  peer BSNET-3011 next-hop-local
+  peer 172.16.31.2 enable
+  peer 172.16.31.2 group BSNET-3011
+  peer 172.16.31.6 enable
+  peer 172.16.31.6 group BSNET-3011
+  peer BSNET-ABA-V6 enable
+  peer BSNET-IGM-V4 enable
+  peer BSNET-IGM-V4 route-policy BSNET-V4-IN import
+  peer BSNET-IGM-V4 route-policy BSNET-V4-OUT export
+  peer BSNET-IGM-V4 default-route-advertise
+  peer 138.118.223.62 enable
+  peer 138.118.223.62 group BSNET-IGM-V4
+  peer BSNET-IGM-V6 enable
+  peer BSNET-V4 enable
+  peer BSNET-V4 route-policy BSNET-V4-IN import
+  peer BSNET-V4 route-policy BSNET-V4-OUT export
+  peer BSNET-V4 default-route-advertise
+  peer BSNET-V6 enable
+  peer BSNET-abt-V4 enable
+  peer BSNET-abt-V4 route-policy BSNET-V4-IN import
+  peer BSNET-abt-V4 route-policy BSNET-V4-OUT export
+  peer BSNET-abt-V4 default-route-advertise
+  peer FNA enable
+  peer FNA route-policy V4-FNA-IN import
+  peer FNA route-policy V4-FNA-OUT export
+  peer FNA next-hop-local
+  peer FNA advertise-community
+  peer 138.118.223.80 enable
+  peer 138.118.223.80 group FNA
+  peer GGC-V4 enable
+  peer GGC-V4 route-policy V4-CDN-IN import
+  peer GGC-V4 route-policy GGC-V4-OUT export
+  peer GGC-V4 next-hop-local
+  peer GGC-V4 advertise-community
+  peer GGC-V4 advertise-ext-community
+  peer GGC-V4 default-route-advertise
+  peer 138.118.223.190 enable
+  peer 138.118.223.190 group GGC-V4
+  peer GGC-V6 enable
+  peer LUNETECH-V4 enable
+  peer LUNETECH-V4 route-policy LUNETECH-V4-IN import
+  peer LUNETECH-V4 route-policy LUNETECH-V4-OUT export
+  peer LUNETECH-V4 default-route-advertise
+  peer 138.118.223.222 enable
+  peer 138.118.223.222 group LUNETECH-V4
+  peer 172.16.31.10 enable
+  peer 172.16.31.10 group LUNETECH-V4
+  peer LUNETECH-V6 enable
+  peer V4-Akamai enable
+  peer V4-Akamai route-policy V4-Akamai-IN import
+  peer V4-Akamai route-policy V4-Akamai-OUT export
+  peer 45.68.73.166 enable
+  peer 45.68.73.166 group V4-Akamai
+  peer 45.184.144.79 enable
+  peer 45.184.144.79 group V4-Akamai
+  peer 45.184.145.166 enable
+  peer 45.184.145.166 group V4-Akamai
+  peer 187.16.220.8 enable
+  peer 187.16.220.8 group V4-Akamai
+  peer 187.16.223.244 enable
+  peer 187.16.223.244 group V4-Akamai
+  peer 187.16.223.245 enable
+  peer 187.16.223.245 group V4-Akamai
+  peer V4-Apple enable
+  peer V4-Apple route-policy V4-Apple-in import
+  peer V4-Apple route-policy V4-Apple-out export
+  peer 187.16.213.181 enable
+  peer 187.16.213.181 group V4-Apple
+  peer 187.16.213.182 enable
+  peer 187.16.213.182 group V4-Apple
+  peer V4-CloudflareSP enable
+  peer V4-CloudflareSP route-policy V4-CloudflareSP-in import
+  peer V4-CloudflareSP route-policy V4-CloudflareSP-out export
+  peer 45.68.72.137 enable
+  peer 45.68.72.137 group V4-CloudflareSP
+  peer 45.184.144.137 enable
+  peer 45.184.144.137 group V4-CloudflareSP
+  peer V4-Globo enable
+  peer V4-Globo route-policy V4-Globo-in import
+  peer V4-Globo route-policy V4-Globo-out export
+  peer V4-Globo advertise-community
+  peer 45.68.72.240 enable
+  peer 45.68.72.240 group V4-Globo
+  peer 45.68.72.241 enable
+  peer 45.68.72.241 group V4-Globo
+  peer 45.184.144.240 enable
+  peer 45.184.144.240 group V4-Globo
+  peer 45.184.144.241 enable
+  peer 45.184.144.241 group V4-Globo
+  peer V4-META-FO enable
+  peer V4-META-FO route-policy V4-META-IN import
+  peer V4-META-FO route-policy V4-META-OUT export
+  peer V4-META-FO advertise-community
+  peer 45.68.72.53 enable
+  peer 45.68.72.53 group V4-META-FO
+  peer 45.68.72.79 enable
+  peer 45.68.72.79 group V4-META-FO
+  peer 45.68.72.106 enable
+  peer 45.68.72.106 group V4-META-FO
+  peer 45.68.74.36 enable
+  peer 45.68.74.36 group V4-META-FO
+  peer 45.68.74.37 enable
+  peer 45.68.74.37 group V4-META-FO
+  peer 45.184.144.53 enable
+  peer 45.184.144.53 group V4-META-FO
+  peer 45.184.144.106 enable
+  peer 45.184.144.106 group V4-META-FO
+  peer 45.184.146.36 enable
+  peer 45.184.146.36 group V4-META-FO
+  peer 45.184.146.37 enable
+  peer 45.184.146.37 group V4-META-FO
+  peer V4-META-SP enable
+  peer V4-META-SP route-policy V4-META-IN import
+  peer V4-META-SP route-policy V4-META-OUT export
+  peer 187.16.218.82 enable
+  peer 187.16.218.82 group V4-META-SP
+  peer 187.16.220.240 enable
+  peer 187.16.220.240 group V4-META-SP
+  peer 187.16.222.60 enable
+  peer 187.16.222.60 group V4-META-SP
+  peer 187.16.222.61 enable
+  peer 187.16.222.61 group V4-META-SP
+  peer V4-TWITCH enable
+  peer V4-TWITCH route-policy V4-TWITCH-IN import
+  peer V4-TWITCH route-policy V4-TWITCH-OUT export
+  peer 187.16.221.243 enable
+  peer 187.16.221.243 group V4-TWITCH
+  peer 187.16.221.244 enable
+  peer 187.16.221.244 group V4-TWITCH
+  peer 187.16.222.239 enable
+  peer 187.16.222.239 group V4-TWITCH
+  peer 187.16.222.240 enable
+  peer 187.16.222.240 group V4-TWITCH
+  peer V4-ubisoft enable
+  peer V4-ubisoft route-policy V4-ubisoft-in import
+  peer V4-ubisoft route-policy V4-ubisoft-out export
+  peer 187.16.220.229 enable
+  peer 187.16.220.229 group V4-ubisoft
+  peer V6-Akamai enable
+  peer V6-Apple enable
+  peer V6-FNA enable
+  peer V6-GLOBO enable
+  peer V6-META-FO enable
+  peer V6-META-SP enable
+  peer V6-TWITCH-SP enable
+  peer V6-ubisoft enable
+  peer v4-CTE enable
+  peer v4-CTE route-policy v4-CTE-IN import
+  peer v4-CTE route-policy v4-CTE-OUT export
+  peer v4-HE-Fortaleza enable
+  peer v4-HE-Fortaleza route-policy v4-HE-Fortaleza-IN import
+  peer v4-HE-Fortaleza route-policy v4-HE-Fortaleza-OUT export
+  peer v4-HE-Fortaleza advertise-community
+  peer 45.184.144.214 enable
+  peer 45.184.144.214 group v4-HE-Fortaleza
+  peer v4-LG-BEL-FO enable
+  peer v4-LG-BEL-FO route-policy v4-LG-BEL-FO-IN import
+  peer v4-LG-BEL-FO route-policy v4-LG-BEL-FO-OUT export
+  peer v4-LG-BEL-FO advertise-community
+  peer 45.184.144.252 enable
+  peer 45.184.144.252 group v4-LG-BEL-FO
+  peer 187.16.195.252 enable
+  peer 187.16.195.252 group v4-LG-BEL-FO
+  peer v4-LG-SP enable
+  peer v4-LG-SP route-policy v4-LG-SP-IN import
+  peer v4-LG-SP route-policy v4-LG-SP-OUT export
+  peer v4-LG-SP advertise-community
+  peer 187.16.216.252 enable
+  peer 187.16.216.252 group v4-LG-SP
+  peer v4-Netflix enable
+  peer v4-Netflix route-policy v4-Netflix-IN import
+  peer v4-Netflix route-policy v4-Netflix-OUT export
+  peer v4-Netflix next-hop-local
+  peer v4-Netflix advertise-community
+  peer 138.118.223.54 enable
+  peer 138.118.223.54 group v4-Netflix
+  peer v4-ONLINE enable
+  peer v4-ONLINE route-policy v4-ONLINE-IN import
+  peer v4-ONLINE route-policy v4-ONLINE-OUT export
+  peer v4-ONLINE next-hop-local
+  peer v4-ONLINE advertise-community
+  peer 10.244.100.45 enable
+  peer 10.244.100.45 group v4-ONLINE
+  peer v4-PTT-BEL-FOR enable
+  peer v4-PTT-BEL-FOR route-policy v4-PTT-BEL-FOR-IN import
+  peer v4-PTT-BEL-FOR route-policy v4-PTT-BEL-FOR-OUT export
+  peer v4-PTT-BEL-FOR advertise-community
+  peer v4-PTT-BEL-FOR advertise-ext-community
+  peer 45.68.79.253 enable
+  peer 45.68.79.253 group v4-PTT-BEL-FOR
+  peer 45.68.79.254 enable
+  peer 45.68.79.254 group v4-PTT-BEL-FOR
+  peer 45.184.144.253 enable
+  peer 45.184.144.253 group v4-PTT-BEL-FOR
+  peer 45.184.144.254 enable
+  peer 45.184.144.254 group v4-PTT-BEL-FOR
+  peer 187.16.195.253 enable
+  peer 187.16.195.253 group v4-PTT-BEL-FOR
+  peer 187.16.195.254 enable
+  peer 187.16.195.254 group v4-PTT-BEL-FOR
+  peer v4-PTT-SP enable
+  peer v4-PTT-SP route-policy v4-PTT-SP-IN import
+  peer v4-PTT-SP route-policy v4-PTT-SP-OUT export
+  peer v4-PTT-SP advertise-community
+  peer v4-PTT-SP advertise-ext-community
+  peer 187.16.216.253 enable
+  peer 187.16.216.253 group v4-PTT-SP
+  peer 187.16.216.254 enable
+  peer 187.16.216.254 group v4-PTT-SP
+  peer v4-WIRELINK enable
+  peer v4-WIRELINK route-policy v4-WIRELINK-IN import
+  peer v4-WIRELINK route-policy v4-WIRELINK-OUT export
+  peer v4-WIRELINK advertise-community
+  peer 172.31.9.153 enable
+  peer 172.31.9.153 group v4-WIRELINK
+  peer v4-rf-wirelink enable
+  peer v4-rf-wirelink route-policy Wirelink-full-V4-IN import
+  peer v4-rf-wirelink route-policy v4-deny-out export
+  peer 10.0.0.125 enable
+  peer 10.0.0.125 group v4-rf-wirelink
+  peer v4-vicnet enable
+  peer v4-vicnet route-policy v4-vicnet-in import
+  peer v4-vicnet route-policy v4-vicnet-out export
+  peer v4-vicnet next-hop-local
+  peer v4-vicnet default-route-advertise
+  peer 10.20.33.2 enable
+  peer 10.20.33.2 group v4-vicnet
+  peer 138.118.223.194 enable
+  peer 138.118.223.194 group v4-vicnet
+  peer v6-HE-Fortaleza enable
+  peer v6-LG-BEL-FO enable
+  peer v6-LG-SP enable
+  peer v6-LG-SP route-policy v6-LG-SP-IN import
+  peer v6-LG-SP route-policy v6-LG-SP-OUT export
+  peer v6-PTT-BEL-FOR enable
+  peer v6-PTT-SP enable
+  peer v6-WIRELINK enable
+ #
+ ipv6-family unicast
+  undo synchronization
+  network 2804:2550:: 32
+  peer 2804:2468::C20 enable
+  peer 2804:2468::C20 route-policy v6-ONLINE-Full-IN import
+  peer 2804:2468::C20 route-policy v6-ONLINE-Full-OUT export
+  peer 2804:2468::C20 next-hop-local
+  peer 2804:2550:8010::2 enable
+  peer 2804:2550:8010::2 route-policy v6-martinsnet-in import
+  peer 2804:2550:8010::2 route-policy v6-martinsnet-out export
+  peer 2804:2550:8010::2 next-hop-local
+  peer BSNET-ABA-V6 enable
+  peer BSNET-ABA-V6 route-policy BSNET-V6-IN import
+  peer BSNET-ABA-V6 route-policy BSNET-V6-OUT export
+  peer 2804:2550:800A::2 enable
+  peer 2804:2550:800A::2 group BSNET-ABA-V6
+  peer BSNET-IGM-V6 enable
+  peer BSNET-IGM-V6 route-policy BSNET-V6-IN import
+  peer BSNET-IGM-V6 route-policy BSNET-V6-OUT export
+  peer BSNET-IGM-V6 default-route-advertise
+  peer BSNET-V6 enable
+  peer BSNET-V6 route-policy BSNET-V6-IN import
+  peer BSNET-V6 route-policy BSNET-V6-OUT export
+  peer BSNET-V6 default-route-advertise
+  peer 2804:2550:8007::2 enable
+  peer 2804:2550:8007::2 group BSNET-V6
+  peer 2804:2550:8008::2 enable
+  peer 2804:2550:8008::2 group BSNET-V6
+  peer GGC-V6 enable
+  peer GGC-V6 route-policy V6-CDN-IN import
+  peer GGC-V6 route-policy GGC-V6-OUT export
+  peer GGC-V6 default-route-advertise
+  peer 2804:2550:1:8888::FFFE enable
+  peer 2804:2550:1:8888::FFFE group GGC-V6
+  peer LUNETECH-V6 enable
+  peer LUNETECH-V6 route-policy LUNETECH-V6-IN import
+  peer LUNETECH-V6 route-policy LUNETECH-V6-OUT export
+  peer LUNETECH-V6 default-route-advertise
+  peer 2804:2550:8006::2 enable
+  peer 2804:2550:8006::2 group LUNETECH-V6
+  peer V6-Akamai enable
+  peer V6-Akamai as-path-filter 1 export
+  peer V6-Akamai route-policy V6-Akamai-IN import
+  peer V6-Akamai route-policy V6-Akamai-OUT export
+  peer 2001:12F8::220:8 enable
+  peer 2001:12F8::220:8 group V6-Akamai
+  peer V6-Apple enable
+  peer V6-Apple route-policy V6-Apple-IN import
+  peer V6-Apple route-policy V6-Apple-OUT export
+  peer 2001:12F8::213:181 enable
+  peer 2001:12F8::213:181 group V6-Apple
+  peer 2001:12F8::213:182 enable
+  peer 2001:12F8::213:182 group V6-Apple
+  peer V6-CloudflareSP enable
+  peer V6-CloudflareSP route-policy V6-CloudflareSP-IN import
+  peer V6-CloudflareSP route-policy V6-CloudflareSP-OUT export
+  peer 2001:12F8:0:9::137 enable
+  peer 2001:12F8:0:9::137 group V6-CloudflareSP
+  peer V6-FNA enable
+  peer V6-FNA route-policy V6-FNA-IN import
+  peer V6-FNA route-policy V6-FNA-OUT export
+  peer V6-FNA next-hop-local
+  peer 2804:2550:FF:1::10 enable
+  peer 2804:2550:FF:1::10 group V6-FNA
+  peer V6-GLOBO enable
+  peer V6-GLOBO route-policy V6-GLOBO-IN import
+  peer V6-GLOBO route-policy V6-GLOBO-OUT export
+  peer 2001:12F8:0:9::240 enable
+  peer 2001:12F8:0:9::240 group V6-GLOBO
+  peer 2001:12F8:0:9::241 enable
+  peer 2001:12F8:0:9::241 group V6-GLOBO
+  peer V6-META-FO enable
+  peer V6-META-FO route-policy V6-META-IN import
+  peer V6-META-FO route-policy V6-META-OUT export
+  peer 2001:12F8:0:9::53 enable
+  peer 2001:12F8:0:9::53 group V6-META-FO
+  peer 2001:12F8:0:9::106 enable
+  peer 2001:12F8:0:9::106 group V6-META-FO
+  peer 2001:12F8:0:9::146:36 enable
+  peer 2001:12F8:0:9::146:36 group V6-META-FO
+  peer 2001:12F8:0:9::146:37 enable
+  peer 2001:12F8:0:9::146:37 group V6-META-FO
+  peer V6-META-SP enable
+  peer V6-META-SP route-policy V6-META-IN import
+  peer V6-META-SP route-policy V6-META-OUT export
+  peer 2001:12F8::218:82 enable
+  peer 2001:12F8::218:82 group V6-META-SP
+  peer 2001:12F8::220:240 enable
+  peer 2001:12F8::220:240 group V6-META-SP
+  peer 2001:12F8::222:60 enable
+  peer 2001:12F8::222:60 group V6-META-SP
+  peer 2001:12F8::222:61 enable
+  peer 2001:12F8::222:61 group V6-META-SP
+  peer V6-TWITCH-SP enable
+  peer V6-TWITCH-SP route-policy V6-TWITCH-IN import
+  peer V6-TWITCH-SP route-policy V6-TWITCH-OUT export
+  peer 2001:12F8::221:243 enable
+  peer 2001:12F8::221:243 group V6-TWITCH-SP
+  peer 2001:12F8::221:244 enable
+  peer 2001:12F8::221:244 group V6-TWITCH-SP
+  peer 2001:12F8::222:239 enable
+  peer 2001:12F8::222:239 group V6-TWITCH-SP
+  peer 2001:12F8::222:240 enable
+  peer 2001:12F8::222:240 group V6-TWITCH-SP
+  peer V6-ubisoft enable
+  peer V6-ubisoft route-policy V6-ubisoft-in import
+  peer V6-ubisoft route-policy V6-ubisoft-out export
+  peer 2001:12F8::220:229 enable
+  peer 2001:12F8::220:229 group V6-ubisoft
+  peer v6-HE-Fortaleza enable
+  peer v6-HE-Fortaleza route-policy v6-HE-Fortaleza-IN import
+  peer v6-HE-Fortaleza route-policy v6-HE-Fortaleza-OUT export
+  peer v6-HE-Fortaleza next-hop-local
+  peer 2001:12F8:0:9::214 enable
+  peer 2001:12F8:0:9::214 group v6-HE-Fortaleza
+  peer v6-LG-BEL-FO enable
+  peer v6-LG-BEL-FO route-policy v6-LG-BEL-FO-IN import
+  peer v6-LG-BEL-FO route-policy v6-LG-BEL-FO-OUT export
+  peer 2001:12F8:0:9::252 enable
+  peer 2001:12F8:0:9::252 group v6-LG-BEL-FO
+  peer 2001:12F8:0:18::252 enable
+  peer 2001:12F8:0:18::252 group v6-LG-BEL-FO
+  peer v6-LG-SP enable
+  peer v6-LG-SP route-policy v6-LG-SP-IN import
+  peer v6-LG-SP route-policy v6-LG-SP-OUT export
+  peer 2001:12F8::252 enable
+  peer 2001:12F8::252 group v6-LG-SP
+  peer v6-Netflix enable
+  peer v6-Netflix route-policy v6-Netflix-IN import
+  peer v6-Netflix route-policy v6-Netflix-OUT export
+  peer v6-Netflix next-hop-local
+  peer 2804:2550:800C::2 enable
+  peer 2804:2550:800C::2 group v6-Netflix
+  peer v6-ONLINE enable
+  peer v6-ONLINE route-policy v6-ONLINE-IN import
+  peer v6-ONLINE route-policy v6-ONLINE-OUT export
+  peer v6-ONLINE next-hop-local
+  peer 2804:2468:3004::26:DED:D enable
+  peer 2804:2468:3004::26:DED:D group v6-ONLINE
+  peer v6-PTT-BEL-FOR enable
+  peer v6-PTT-BEL-FOR route-policy v6-PTT-BEL-FOR-IN import
+  peer v6-PTT-BEL-FOR route-policy v6-PTT-BEL-FOR-OUT export
+  peer 2001:12F8:0:9::253 enable
+  peer 2001:12F8:0:9::253 group v6-PTT-BEL-FOR
+  peer 2001:12F8:0:9::254 enable
+  peer 2001:12F8:0:9::254 group v6-PTT-BEL-FOR
+  peer 2001:12F8:0:18::253 enable
+  peer 2001:12F8:0:18::253 group v6-PTT-BEL-FOR
+  peer 2001:12F8:0:18::254 enable
+  peer 2001:12F8:0:18::254 group v6-PTT-BEL-FOR
+  peer v6-PTT-SP enable
+  peer v6-PTT-SP route-policy v6-PTT-SP-IN import
+  peer v6-PTT-SP route-policy v6-PTT-SP-OUT export
+  peer 2001:12F8::253 enable
+  peer 2001:12F8::253 group v6-PTT-SP
+  peer 2001:12F8::254 enable
+  peer 2001:12F8::254 group v6-PTT-SP
+  peer v6-WIRELINK enable
+  peer v6-WIRELINK route-policy v6-WIRELINK-IN import
+  peer v6-WIRELINK route-policy v6-WIRELINK-OUT export
+  peer 2804:1A04:0:1::3 enable
+  peer 2804:1A04:0:1::3 group v6-WIRELINK
+  peer 2804:1A04:0:3::8FD enable
+  peer 2804:1A04:0:3::8FD group v6-WIRELINK
+  peer v6-vicnet enable
+  peer v6-vicnet route-policy v6-vicnet-in import
+  peer v6-vicnet route-policy v6-vicnet-out export
+  peer v6-vicnet next-hop-local
+  peer v6-vicnet default-route-advertise
+  peer 2804:2550:FF::3016:2 enable
+  peer 2804:2550:FF::3016:2 group v6-vicnet
+  peer 2804:2550:FF::3016:6 enable
+  peer 2804:2550:FF::3016:6 group v6-vicnet
+#
+ospf 1 router-id 138.118.223.255
+ default-route-advertise always
+ import-route direct
+ import-route static
+ area 0.0.0.0
+  network 10.2.2.0 0.0.0.3
+  network 10.11.0.16 0.0.0.3
+  network 10.11.0.28 0.0.0.3
+  network 10.11.0.100 0.0.0.3
+  network 10.11.0.104 0.0.0.3
+  network 10.11.0.120 0.0.0.3
+  network 10.11.0.160 0.0.0.3
+  network 10.11.0.240 0.0.0.3
+  network 10.11.0.248 0.0.0.3
+  network 10.11.11.0 0.0.0.0
+  network 10.11.20.0 0.0.0.255
+  network 10.11.22.0 0.0.0.255
+  network 10.255.63.0 0.0.0.3
+  network 10.255.255.240 0.0.0.7
+  network 10.255.255.248 0.0.0.7
+  network 138.118.223.128 0.0.0.63
+  network 138.118.223.255 0.0.0.0
+#
+ospf 3
+ area 0.0.0.1
+  network 10.1.1.1 0.0.0.0
+#
+route-policy A10-in permit node 10
+ apply local-preference 999
+#
+route-policy A10-out permit node 10
+ if-match ip-prefix v4-default
+#
+route-policy BSNET-V4-IN permit node 10
+ if-match ip-prefix BSNET-V4
+ apply local-preference 900
+ apply community 4273:100
+#
+route-policy BSNET-V4-OUT permit node 10
+#
+route-policy BSNET-V6-IN permit node 10
+ if-match ipv6 address prefix-list BSNET-V6
+ apply community 4273:64578
+#
+route-policy BSNET-V6-OUT permit node 10
+#
+route-policy CTE-Full-V4-IN deny node 9
+#
+route-policy CTE-Full-V4-OUT permit node 10
+#
+route-policy CTE-V4-OUT permit node 10
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy CTE-V4-OUT permit node 20
+ if-match community-filter 10
+#
+route-policy CTE-V4-OUT permit node 30
+ if-match community-filter 20
+#
+route-policy GGC-V4-OUT permit node 9
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy GGC-V4-OUT permit node 10
+ if-match community-filter 10
+#
+route-policy GGC-V4-OUT permit node 11
+ if-match community-filter 11
+#
+route-policy GGC-V4-OUT permit node 20
+ if-match community-filter 20
+#
+route-policy GGC-V4-OUT permit node 30
+ if-match ip-prefix v4-vicnet
+#
+route-policy GGC-V4-OUT permit node 40
+ if-match ip-prefix v4-CGNAT
+ apply community 15169:12100
+#
+route-policy GGC-V6-OUT permit node 9
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy GGC-V6-OUT permit node 11
+ if-match community-filter 11
+#
+route-policy GGC-V6-OUT permit node 12
+ if-match ipv6 address prefix-list v6-vicnet
+#
+route-policy LUNETECH-V4-IN permit node 10
+ if-match ip-prefix LUNETECH-V4
+ apply community 4273:44985
+#
+route-policy LUNETECH-V4-OUT permit node 10
+#
+route-policy LUNETECH-V6-IN permit node 10
+ if-match ipv6 address prefix-list LUNETECH-V6
+#
+route-policy LUNETECH-V6-OUT permit node 10
+#
+route-policy V4-Akamai-IN permit node 10
+ apply local-preference 100
+#
+route-policy V4-Akamai-OUT permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V4-Apple-in permit node 10
+ apply local-preference 150
+#
+route-policy V4-Apple-out permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V4-CDN-IN permit node 10
+#
+route-policy V4-CloudflareSP-in permit node 10
+ apply local-preference 300
+#
+route-policy V4-CloudflareSP-out permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V4-FNA-IN permit node 10
+#
+route-policy V4-FNA-OUT permit node 10
+ if-match ip-prefix v4-CDN
+#
+route-policy V4-FNA-OUT permit node 20
+ if-match community-filter V4-CLIENTES
+#               
+route-policy V4-Globo-in permit node 10
+ apply local-preference 700
+#
+route-policy V4-Globo-out permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V4-META-IN permit node 10
+ apply local-preference 300
+#
+route-policy V4-META-OUT permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V4-META-OUT permit node 11
+ if-match ip-prefix v4-vicnet
+#
+route-policy V4-TWITCH-IN permit node 10
+ apply local-preference 300
+#
+route-policy V4-TWITCH-OUT permit node 10
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy V4-ubisoft-in permit node 10
+ apply local-preference 300
+#
+route-policy V4-ubisoft-out permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy V6-Akamai-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-Akamai-OUT permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+ if-match as-path-filter 1
+#
+route-policy V6-Apple-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-Apple-OUT permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy V6-CDN-IN permit node 10
+#
+route-policy V6-CloudflareSP-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-CloudflareSP-OUT permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy V6-FNA-IN permit node 10
+#
+route-policy V6-FNA-OUT permit node 10
+ if-match ipv6 address prefix-list v6-CDN
+#
+route-policy V6-GLOBO-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-GLOBO-OUT permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy V6-META-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-META-OUT permit node 10
+ if-match ipv6 address prefix-list v6-PTT-SP
+#
+route-policy V6-TWITCH-IN permit node 10
+ apply local-preference 300
+#
+route-policy V6-TWITCH-OUT permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy V6-ubisoft-in permit node 10
+ apply local-preference 300
+#
+route-policy V6-ubisoft-out permit node 10
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy WIRELINK-V4-OUT permit node 10
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy WIRELINK-V4-OUT permit node 20
+ if-match community-filter 10
+#
+route-policy WIRELINK-V4-OUT permit node 30
+ if-match community-filter 20
+#
+route-policy Wirelink-full-V4-IN permit node 10
+ apply local-preference 50
+#
+route-policy Wirelink-full-V4-OUT deny node 9
+#
+route-policy v4-CTE-IN deny node 8
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy v4-CTE-IN permit node 10
+#
+route-policy v4-CTE-OUT permit node 10
+ if-match ip-prefix v4-CTE
+#
+route-policy v4-HE-Fortaleza-IN permit node 10
+ apply local-preference 200
+#
+route-policy v4-HE-Fortaleza-OUT permit node 10
+ if-match ip-prefix v4-PTT-BEL-FOR
+#
+route-policy v4-HE-Fortaleza-OUT permit node 11
+ if-match ip-prefix v4-vicnet
+#
+route-policy v4-LG-BEL-FO-IN deny node 9
+#
+route-policy v4-LG-BEL-FO-OUT deny node 9
+ if-match ip-prefix deny-voob
+#
+route-policy v4-LG-BEL-FO-OUT permit node 10
+ if-match ip-prefix v4-PTT-BEL-FOR
+#
+route-policy v4-LG-BEL-FO-OUT permit node 100
+ apply community 65000:6939 additive
+#
+route-policy v4-LG-SP-IN deny node 9
+#
+route-policy v4-LG-SP-OUT permit node 10
+ if-match ip-prefix v4-PTT-SP
+#
+route-policy v4-LG-SP-OUT permit node 100
+ apply community 65000:6939 additive
+#
+route-policy v4-Netflix-IN permit node 10
+#
+route-policy v4-Netflix-OUT permit node 10
+ if-match ip-prefix v4-CDN
+#
+route-policy v4-Netflix-OUT permit node 20
+ if-match ip-prefix v4-CGNAT
+ apply community 15169:12100
+#
+route-policy v4-ONLINE-Full-IN permit node 8
+ if-match ip-prefix DNS-GOOGLE
+ apply local-preference 500
+#
+route-policy v4-ONLINE-Full-IN permit node 9
+ if-match ip-prefix v4-Altarede
+ apply local-preference 500
+#
+route-policy v4-ONLINE-Full-IN permit node 10
+ apply local-preference 250
+#
+route-policy v4-ONLINE-Full-OUT deny node 10
+#
+route-policy v4-ONLINE-IN permit node 10
+#
+route-policy v4-ONLINE-OUT permit node 10
+ if-match ip-prefix v4-WIRELINK
+ apply as-path 264273 264273 264273 additive
+#
+route-policy v4-ONLINE-OUT permit node 11
+ if-match community-filter V4-CLIENTES
+#
+route-policy v4-ONLINE-OUT-OUT permit node 11
+ if-match community-filter V4-CLIENTES
+#               
+route-policy v4-PTT-BEL-FOR-IN permit node 4
+ if-match ip-prefix v4-receita
+ apply local-preference 600
+#
+route-policy v4-PTT-BEL-FOR-IN permit node 5
+ if-match ip-prefix DNS-GOOGLE
+ apply local-preference 500
+#
+route-policy v4-PTT-BEL-FOR-IN permit node 6
+ if-match ip-prefix v4-amazon
+ apply local-preference 500
+#
+route-policy v4-PTT-BEL-FOR-IN deny node 7
+ if-match ip-prefix v4-smart
+#
+route-policy v4-PTT-BEL-FOR-IN permit node 8
+ if-match ip-prefix PTT-Bel-in
+ apply local-preference 250
+#
+route-policy v4-PTT-BEL-FOR-IN permit node 9
+ if-match ip-prefix BGPv4_IX.br-Block-Prefix
+#
+route-policy v4-PTT-BEL-FOR-IN permit node 10
+ apply local-preference 280
+#
+route-policy v4-PTT-BEL-FOR-OUT permit node 10
+ if-match ip-prefix v4-PTT-BEL-FOR
+#
+route-policy v4-PTT-BEL-FOR-OUT permit node 11
+ if-match community-filter V4-CLIENTES
+#
+route-policy v4-PTT-SP-IN permit node 7
+ if-match ip-prefix v4-garena
+ apply local-preference 600
+#
+route-policy v4-PTT-SP-IN deny node 8
+ if-match ip-prefix deny-voob
+#
+route-policy v4-PTT-SP-IN deny node 9
+ if-match ip-prefix BGPv4_IX.br-Block-Prefix
+#
+route-policy v4-PTT-SP-IN permit node 10
+ apply local-preference 100
+#
+route-policy v4-PTT-SP-IN permit node 100
+ if-match ip-prefix v4-Altarede
+ apply local-preference 500
+#
+route-policy v4-PTT-SP-OUT permit node 10
+ if-match ip-prefix v4-PTT-SP
+ apply as-path 264273 additive
+#
+route-policy v4-PTT-SP-OUT permit node 11
+ if-match ip-prefix v4-vicnet
+ apply as-path 264273 additive
+#
+route-policy v4-WIRELINK-IN deny node 8
+ if-match ip-prefix deny-voob
+#
+route-policy v4-WIRELINK-IN deny node 9
+ if-match ip-prefix v4-bitcontrol
+#
+route-policy v4-WIRELINK-IN permit node 10
+ apply local-preference 100
+#
+route-policy v4-WIRELINK-OUT deny node 10
+ if-match ip-prefix v4-WIRELINK
+ apply as-path 264273 264273 264273 additive
+#               
+route-policy v4-WIRELINK-OUT deny node 11
+ if-match ip-prefix v4-vicnet
+ apply as-path 264273 264273 264273 additive
+#
+route-policy v4-WIRELINK-OUT deny node 200
+ if-match ip-prefix deny-voob
+#
+route-policy v4-deny-out deny node 10
+#
+route-policy v4-martinsnet-in permit node 10
+ if-match ip-prefix v4-martinsnet
+ apply local-preference 400
+ apply community 4273:100
+#
+route-policy v4-martinsnet-out permit node 10
+#
+route-policy v4-vicnet-in permit node 10
+ if-match ip-prefix v4-vicnet
+ apply local-preference 900
+ apply community 4273:100
+#
+route-policy v4-vicnet-out permit node 9
+ if-match ip-prefix v4-default
+#
+route-policy v4-vicnet-out permit node 10
+#
+route-policy v6-CTE-IN permit node 10
+#
+route-policy v6-CTE-OUT permit node 10
+ if-match ipv6 address prefix-list v6-CTE
+#
+route-policy v6-HE-Fortaleza-IN permit node 10
+ apply local-preference 200
+#
+route-policy v6-HE-Fortaleza-OUT permit node 10
+ if-match ipv6 address prefix-list v6-PTT-SP
+#
+route-policy v6-HE-Fortaleza-OUT permit node 11
+ if-match ipv6 address prefix-list v6-bitcontrol
+#
+route-policy v6-HE-Fortaleza-OUT permit node 12
+ if-match ipv6 address prefix-list v6-PTT-BEL-FOR
+#
+route-policy v6-LG-BEL-FO-IN deny node 9
+#
+route-policy v6-LG-BEL-FO-OUT permit node 10
+ if-match ipv6 address prefix-list v6-PTT-BEL-FOR
+#
+route-policy v6-LG-BEL-FO-OUT permit node 100
+ if-match community-filter 65000:6939
+#
+route-policy v6-LG-SP-IN deny node 9
+#
+route-policy v6-LG-SP-OUT deny node 9
+#
+route-policy v6-LG-SP-OUT permit node 10
+#
+route-policy v6-LG-SP-OUT permit node 100
+ if-match community-filter 65000:6939
+#
+route-policy v6-Netflix-IN permit node 10
+#
+route-policy v6-Netflix-OUT permit node 10
+ if-match ipv6 address prefix-list v6-CDN
+#
+route-policy v6-ONLINE-Full-IN permit node 10
+ apply local-preference 200
+#
+route-policy v6-ONLINE-Full-OUT deny node 10
+#
+route-policy v6-ONLINE-IN permit node 9
+ if-match ip-prefix v4-Altarede
+ apply local-preference 900
+#
+route-policy v6-ONLINE-IN permit node 10
+ apply local-preference 100
+#
+route-policy v6-ONLINE-OUT permit node 10
+ if-match ipv6 address prefix-list v6-WIRELINK
+ apply as-path 264273 264273 additive
+#
+route-policy v6-ONLINE-OUT permit node 11
+ if-match ipv6 address prefix-list v6-vicnet
+#
+route-policy v6-PTT-BEL-FOR-IN permit node 10
+ apply local-preference 100
+#
+route-policy v6-PTT-BEL-FOR-OUT permit node 10
+ if-match ipv6 address prefix-list v6-PTT-BEL-FOR
+#
+route-policy v6-PTT-BEL-FOR-OUT permit node 11
+ if-match ipv6 address prefix-list v6-vicnet
+#
+route-policy v6-PTT-SP-IN permit node 10
+#
+route-policy v6-PTT-SP-OUT permit node 10
+ if-match ipv6 address prefix-list v6-PTT-SP
+#
+route-policy v6-PTT-SP-OUT permit node 11
+ if-match ipv6 address prefix-list v6-vicnet
+#
+route-policy v6-WIRELINK-IN deny node 9
+ if-match ipv6 address prefix-list v6-deny-voob
+#
+route-policy v6-WIRELINK-IN permit node 10
+#
+route-policy v6-WIRELINK-OUT permit node 10
+ if-match ipv6 address prefix-list v6-WIRELINK
+ apply as-path 264273 264273 264273 additive
+#
+route-policy v6-WIRELINK-OUT permit node 11
+ if-match ipv6 address prefix-list v6-vicnet
+ apply as-path 264273 264273 264273 additive
+#
+route-policy v6-martinsnet-in permit node 10
+ if-match ipv6 address prefix-list v6-martinsnet
+ apply local-preference 400
+#
+route-policy v6-martinsnet-out permit node 10
+#
+route-policy v6-vicnet-in permit node 10
+ if-match ipv6 address prefix-list v6-vicnet
+#
+route-policy v6-vicnet-out permit node 10
+#
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 10 deny 0.0.0.0 0
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 20 deny 0.0.0.0 8 greater-equal 8 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 30 deny 10.0.0.0 8 greater-equal 8 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 40 deny 100.64.0.0 10 greater-equal 10 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 50 deny 127.0.0.0 8 greater-equal 8 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 60 deny 169.254.0.0 16 greater-equal 16 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 70 deny 172.16.0.0 12 greater-equal 12 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 80 deny 192.0.0.0 24 greater-equal 24 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 90 deny 192.0.2.0 24 greater-equal 24 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 100 deny 192.88.99.0 24 greater-equal 24 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 110 deny 192.168.0.0 16 greater-equal 16 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 120 deny 198.18.0.0 15 greater-equal 15 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 130 deny 198.51.100.0 24 greater-equal 24 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 140 deny 203.0.113.0 24 greater-equal 24 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 150 deny 224.0.0.0 4 greater-equal 4 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 160 deny 240.0.0.0 4 greater-equal 4 less-equal 32
+ip ip-prefix BGPv4_IX.br-Block-Prefix index 170 deny 168.181.20.0 22 greater-equal 22 less-equal 32
+ip ip-prefix BGPv4_IX.br-Export index 10 permit 192.0.2.0 24
+ip ip-prefix BGPv4_IX.br-Export index 20 permit 198.51.100.0 24
+ip ip-prefix BGPv4_IX.br-Export index 30 permit 203.0.113.0 24
+ip ip-prefix BSNET-V4 index 10 permit 138.36.124.0 22 greater-equal 22 less-equal 24
+ip ip-prefix CTE-default index 10 permit 0.0.0.0 0
+ip ip-prefix DNS-GOOGLE index 10 permit 8.8.8.0 24
+ip ip-prefix LUNETECH-V4 index 10 permit 168.197.28.0 22 greater-equal 22 less-equal 24
+ip ip-prefix PTT-Bel-in index 10 permit 216.172.172.0 23
+ip ip-prefix deny-voob index 10 permit 45.177.140.0 22 greater-equal 22 less-equal 24
+ip ip-prefix deny-voob index 11 permit 170.245.92.0 22 greater-equal 22 less-equal 24
+ip ip-prefix prioriza-wire index 10 permit 177.66.64.0 21
+ip ip-prefix prioriza-wire index 20 permit 186.216.64.0 18
+ip ip-prefix v4-Altarede index 10 permit 187.16.240.0 20 greater-equal 20 less-equal 24
+ip ip-prefix v4-CDN index 50 permit 138.118.220.0 22 greater-equal 22 less-equal 24
+ip ip-prefix v4-CGNAT index 100 permit 100.64.0.0 10 greater-equal 10 less-equal 24
+ip ip-prefix v4-CTE index 30 permit 168.197.29.0 24
+ip ip-prefix v4-CTE index 40 permit 168.197.31.0 24
+ip ip-prefix v4-CTE index 50 permit 138.118.220.0 22
+ip ip-prefix v4-CTE index 51 permit 138.118.220.0 24
+ip ip-prefix v4-CTE index 70 permit 168.197.28.0 24
+ip ip-prefix v4-CTE index 80 permit 168.197.30.0 24
+ip ip-prefix v4-CTE index 90 permit 168.197.28.0 22
+ip ip-prefix v4-PTT-BEL-FOR index 10 permit 138.118.220.0 22 greater-equal 22 less-equal 24
+ip ip-prefix v4-PTT-BEL-FOR index 13 permit 138.118.220.0 22
+ip ip-prefix v4-PTT-SP index 12 permit 138.118.220.0 22 greater-equal 22 less-equal 24
+ip ip-prefix v4-PTT-SP index 15 permit 38.43.64.0 21
+ip ip-prefix v4-SERPRO index 10 permit 161.148.0.0 16 greater-equal 16 less-equal 24
+ip ip-prefix v4-WIRELINK index 50 permit 138.118.220.0 22
+ip ip-prefix v4-WIRELINK index 51 permit 138.118.220.0 23
+ip ip-prefix v4-amazon index 10 permit 54.233.64.0 18 greater-equal 18 less-equal 24
+ip ip-prefix v4-bitcontrol index 10 permit 138.118.220.0 24
+ip ip-prefix v4-bitcontrol index 11 permit 138.118.221.0 24
+ip ip-prefix v4-bitcontrol index 12 permit 138.118.222.0 24
+ip ip-prefix v4-bitcontrol index 13 permit 38.43.64.0 21 greater-equal 21 less-equal 24
+ip ip-prefix v4-default index 10 permit 0.0.0.0 0
+ip ip-prefix v4-garena index 10 permit 143.92.0.0 17 greater-equal 17 less-equal 24
+ip ip-prefix v4-martinsnet index 10 permit 45.5.212.0 22 greater-equal 22 less-equal 24
+ip ip-prefix v4-prefix-cgnat index 10 permit 100.64.0.0 10
+ip ip-prefix v4-prefix-nat index 10 permit 138.118.220.0 24
+ip ip-prefix v4-prefix-nat index 11 permit 138.118.221.0 24
+ip ip-prefix v4-prefix-nat index 12 permit 138.118.222.0 24
+ip ip-prefix v4-receita index 10 permit 161.148.0.0 16 greater-equal 16 less-equal 24
+ip ip-prefix v4-smart index 10 permit 23.19.112.0 21
+ip ip-prefix v4-vicnet index 10 permit 45.224.108.0 22 greater-equal 22 less-equal 24
+ip ip-prefix wirelink-default index 10 permit 0.0.0.0 0
+ip as-path-filter 1 index 10 permit ^20940+(21342|16625|33905|36183|24319|34164|35204|35994|43639|18680|39836|35993|23454|18717|31108|36183)$
+ip as-path-filter 32 index 10 permit .*
+ip community-filter 10 index 10 permit 4273:44985
+ip community-filter 11 index 11 permit 4273:64985
+ip community-filter 20 index 20 permit 4273:44578
+ip community-filter 21 index 21 permit 4273:64578
+ip community-filter 90 index 90 permit 4273:61832
+ip community-filter 100 index 100 permit 4273:26162
+ip community-filter basic 65000:6939 index 10 deny
+ip community-filter basic V4-CLIENTES index 10 permit 4273:100
+ip community-filter basic V6-CLIENTES index 10 permit 6273:100
+ip community-filter advanced Prefixo-CGNAT index 10 permit 15169:12100
+ip community-filter advanced Prefixo-NAT index 10 permit 15169:12000
+ip community-filter advanced as15169 index 10 permit 64603:15169
+ip community-filter advanced as36040 index 10 permit 64603:36040
+#
+ip route-static 0.0.0.0 0.0.0.0 10.255.0.20
+ip route-static 10.0.0.125 255.255.255.255 172.31.9.153
+ip route-static 10.11.0.212 255.255.255.252 10.11.0.162 description olt curucambaba (bras8)
+ip route-static 10.12.252.0 255.255.255.252 10.255.63.2
+ip route-static 10.255.0.20 255.255.255.255 10.244.100.45 description FULL-V4-ONLINE
+ip route-static 10.255.187.1 255.255.255.255 10.2.2.1
+ip route-static 38.43.64.0 255.255.248.0 NULL0
+ip route-static 38.43.64.0 255.255.252.0 NULL0
+ip route-static 132.255.176.72 255.255.255.255 177.137.53.33
+ip route-static 138.118.220.0 255.255.252.0 NULL0
+ip route-static 138.118.220.0 255.255.254.0 NULL0
+ip route-static 138.118.222.0 255.255.254.0 NULL0
+ip route-static 138.118.222.48 255.255.255.255 10.252.1.26 description FIBER-SERVICES-500MB
+ip route-static 138.118.222.52 255.255.255.252 172.16.31.106
+ip route-static 138.118.222.56 255.255.255.255 10.252.1.14 description JEFFERSON.NET
+ip route-static 138.118.222.57 255.255.255.255 10.252.1.6 description WEBNET-VALDO
+ip route-static 138.118.222.58 255.255.255.255 10.252.1.10 description JS-JUABANET-250MB
+ip route-static 138.118.222.59 255.255.255.255 10.252.1.18 description LINKNET-600MB
+ip route-static 138.118.222.60 255.255.255.255 10.252.1.22 description ACAINET-IGM
+ip route-static 138.118.222.61 255.255.255.255 10.252.1.50 description ASPNET
+ip route-static 138.118.222.62 255.255.255.255 10.252.1.54 description LINK-NET-02
+ip route-static 138.118.222.63 255.255.255.255 10.252.1.46 description BITBYTE
+ip route-static 138.118.222.64 255.255.255.252 10.11.5.82 description ARNAUD-TECH
+ip route-static 138.118.222.68 255.255.255.252 10.252.1.2 description HJKNET
+ip route-static 138.118.222.76 255.255.255.252 172.16.31.134 description CONNECT-CAMETA
+ip route-static 138.118.222.101 255.255.255.255 172.16.31.10 description LUNETECH
+ip route-static 138.118.222.107 255.255.255.255 10.252.1.22 description ACAINET-IGM(banco)
+ip route-static 138.118.222.108 255.255.255.252 172.16.31.134 description connect-cameta1
+ip route-static 138.118.222.112 255.255.255.252 172.16.31.134 description connect-cameta2
+ip route-static 138.118.222.116 255.255.255.252 172.16.31.118 description CEPAI
+ip route-static 138.118.222.120 255.255.255.252 172.16.31.110 description DOMINIO
+ip route-static 138.118.222.125 255.255.255.255 10.252.1.30 description PCTelecom
+ip route-static 138.118.222.151 255.255.255.255 10.252.1.42 description BITBYTE 500MB
+ip route-static 138.118.222.153 255.255.255.255 10.252.1.22 description ACAINET-IGM-500MB
+ip route-static 138.118.222.157 255.255.255.255 10.252.1.18 description LINKNET-2IP PULICO
+ip route-static 138.118.222.158 255.255.255.255 172.16.31.50 description MARTINS.NET 3GB
+ip route-static 138.118.222.177 255.255.255.255 10.252.1.58 description XTELECOM
+ip route-static 138.118.222.181 255.255.255.255 172.16.31.54 description PROVERTEC
+ip route-static 138.118.223.0 255.255.255.0 NULL0
+ip route-static 138.118.223.28 255.255.255.255 138.118.223.82
+ip route-static 138.118.223.30 255.255.255.255 172.16.11.5
+ip route-static 138.118.223.64 255.255.255.192 138.118.223.14 description FNA
+ip route-static 138.118.223.100 255.255.255.252 172.16.31.114
+ip route-static 138.118.223.130 255.255.255.255 10.11.20.3
+ip route-static 138.118.223.224 255.255.255.240 10.11.0.242
+ip route-static 138.118.223.244 255.255.255.252 172.16.31.110
+ip route-static 138.118.223.248 255.255.255.255 10.11.0.242
+ip route-static 138.118.223.254 255.255.255.255 10.255.63.2
+ip route-static 192.0.2.0 255.255.255.0 NULL0
+ip route-static 198.51.100.0 255.255.255.0 NULL0
+ip route-static 203.0.113.0 255.255.255.0 NULL0
+#
+ipv6 route-static 2001:DB8:10:: 48 NULL0
+ipv6 route-static 2001:DB8:11:: 48 NULL0
+ipv6 route-static 2001:DB8:12:: 48 NULL0
+ipv6 route-static 2804:1A04:0:1::3 128 2804:1A04:0:3::8FD
+ipv6 route-static 2804:2468::C20 128 2804:2468:3004::26:DED:D description FULL-V6-ONLINE
+ipv6 route-static 2804:2550:: 32 NULL0
+ipv6 route-static 2804:2550:FF:1:: 64 2804:2550:800F::2 description v6-FNA
+ipv6 route-static 2804:2550:FF:FFFF:: 64 2804:2550:FF::100:2
+ipv6 route-static 2804:2550:100:: 42 2804:2550:FF::100:2
+ipv6 route-static 2804:2550:3000:: 44 2804:2550:800E::2 description CEPAI
+ipv6 route-static 2804:2550:3010:: 44 2804:2550:800D::2 description ipv6-apnet
+ipv6 route-static 2804:2550:3051:: 48 2804:2550:FF::3051:2 description Conect-CMT
+ipv6 route-static 2804:2550:3052:: 48 2804:2550:800B::2 description v6-Arnaud-tech
+#
+ip ipv6-prefix BGPv6_IX.br-Block-Prefix index 10 deny 2001:DB8:: 32 greater-equal 32 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Block-Prefix index 20 deny 2801:80:1700:: 40 greater-equal 40 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Export index 10 permit 2001:DB8:10:: 48
+ip ipv6-prefix BGPv6_IX.br-Export index 20 permit 2001:DB8:12:: 48
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 10 permit 2001:200:: 23 greater-equal 23 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 20 permit 2001:400:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 30 permit 2001:800:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 40 permit 2001:C00:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 50 permit 2001:1200:: 23 greater-equal 23 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 60 permit 2001:1400:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 70 permit 2001:1800:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 80 permit 2001:1C00:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 90 permit 2001:2000:: 20 greater-equal 20 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 100 permit 2001:3000:: 21 greater-equal 21 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 110 permit 2001:3800:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 120 permit 2001:4000:: 21 greater-equal 21 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 130 permit 2001:4800:: 22 greater-equal 22 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 140 permit 2001:4C00:: 23 greater-equal 23 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 150 permit 2001:5000:: 20 greater-equal 20 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 160 permit 2001:8000:: 18 greater-equal 18 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 170 permit 2003:: 18 greater-equal 18 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 180 permit 2400:: 12 greater-equal 12 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 190 permit 2600:: 12 greater-equal 12 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 200 permit 2610:: 23 greater-equal 23 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 210 permit 2620:: 23 greater-equal 23 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 220 permit 2800:: 12 greater-equal 12 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 230 permit 2A00:: 12 greater-equal 12 less-equal 128
+ip ipv6-prefix BGPv6_IX.br-Permit-Prefix index 240 permit 2C00:: 12 greater-equal 12 less-equal 128
+ip ipv6-prefix BSNET-V6 index 10 permit 2804:21DC:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix LUNETECH-V6 index 10 permit 2804:34E4:: 32
+ip ipv6-prefix v6-CDN index 10 permit 2804:2550:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-CDN index 20 permit 2804:34E4:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-CDN index 30 permit 2804:21DC:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-CDN index 40 permit 2804:4534:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-CTE index 10 permit 2804:2550:: 32
+ip ipv6-prefix v6-CTE index 20 permit 2804:34E4:: 32
+ip ipv6-prefix v6-CTE index 30 permit 2804:21DC:: 32
+ip ipv6-prefix v6-PTT-BEL-FOR index 10 permit 2804:2550:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-PTT-BEL-FOR index 20 permit 2804:34E4:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-PTT-BEL-FOR index 30 permit 2804:21DC:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-PTT-BEL-FOR index 50 permit 2804:3AA4:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-PTT-SP index 10 permit 2804:2550:: 32
+ip ipv6-prefix v6-PTT-SP index 30 permit 2804:21DC:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-WIRELINK index 10 permit 2804:2550:: 32
+ip ipv6-prefix v6-WIRELINK index 30 permit 2804:21DC:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-WIRELINK index 50 permit 2804:3AA4:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-bitcontrol index 10 permit 2804:2550:: 32
+ip ipv6-prefix v6-deny-voob index 10 permit 2804:390C:: 32
+ip ipv6-prefix v6-martinsnet index 10 permit 2804:3AA4:: 32 greater-equal 32 less-equal 48
+ip ipv6-prefix v6-vicnet index 10 permit 2804:4534:: 32 greater-equal 32 less-equal 48
+#
+snmp-agent
+snmp-agent acl 3999
+snmp-agent local-engineid 800007DB052102353AEA101700014601
+snmp-agent community read cipher %^%#nMbeP1YGW;k6r)EljI#*gy.e<THF{Th`eWH,JO*B3t!!;%.[mF'_rK,*ArwI|;mJ+hTssDXbb=0~n%LB%^%# alias __CommunityAliasName_01_15869
+snmp-agent community read cipher %^%#FoYU09{YH2>4`&RsRJVFB[DXTWLKx3v|IlH)"ScKG[jRFcz<,T<zzOLs3^J#e,B*.2PxtLu]6J4{k)'~%^%# alias __CommunityAliasName_02_30710
+#
+snmp-agent sys-info location BitControl
+snmp-agent sys-info version v2c v3
+#
+snmp-agent protocol source-status all-interface
+undo snmp-agent protocol source-status ipv6 all-interface
+#
+undo snmp-agent proxy protocol source-status all-interface
+undo snmp-agent proxy protocol source-status ipv6 all-interface
+#
+stelnet server enable
+ssh user rodrigo
+ssh user rodrigo authentication-type password
+ssh user rodrigo service-type sftp stelnet
+ssh user root
+ssh user root authentication-type password
+ssh user root service-type snetconf stelnet
+ssh server-source all-interface
+undo ssh ipv6 server-source all-interface
+ssh server acl 3999
+ssh authorization-type default aaa
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr
+ssh server hmac sha2_512 sha2_256
+ssh server key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521
+#
+ssh server publickey ecc rsa rsa_sha2_256 rsa_sha2_512
+#
+ssh server dh-exchange min-len 3072
+#
+ssh client first-time enable
+ssh client peer 10.11.0.214 assign rsa-key 10.11.0.214
+ssh client peer 10.11.0.86 assign ecc-key 10.11.0.86
+ssh client peer 10.11.2.2 assign rsa-key 10.11.2.2
+ssh client peer 10.11.20.10 assign rsa-key 10.11.20.10
+ssh client peer 10.11.20.12 assign rsa-key 10.11.20.12
+ssh client peer 10.11.20.14 assign rsa-key 10.11.20.14
+ssh client peer 10.11.20.15 assign rsa-key 10.11.20.15
+ssh client peer 10.11.20.2 assign rsa-key 10.11.20.2
+ssh client peer 10.11.20.3 assign rsa-key 10.11.20.3
+ssh client peer 10.11.20.4 assign rsa-key 10.11.20.4
+ssh client peer 10.11.20.5 assign rsa-key 10.11.20.5
+ssh client peer 10.11.20.6 assign rsa-key 10.11.20.6
+ssh client peer 10.11.20.7 assign rsa-key 10.11.20.7
+ssh client peer 10.11.20.8 assign rsa-key 10.11.20.8
+ssh client peer 10.11.20.9 assign rsa-key 10.11.20.9
+ssh client peer 10.11.22.2 assign rsa-key 10.11.22.2
+ssh client peer 138.118.223.250 assign rsa-key 138.118.223.250
+#
+ssh client publickey ecc rsa rsa_sha2_256 rsa_sha2_512
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr
+ssh client hmac sha2_512 sha2_256
+ssh client key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521
+#
+user-interface maximum-vty 21
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ protocol inbound ssh
+#
+local-aaa-server
+#
+set save-configuration checkpoint daily time 03:00
+#
+return          
+<VS-BGP>
