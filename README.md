@@ -1,1 +1,1 @@
-# ndoc
+# ndoc / script para huawei ne8000

@@ -149,4 +149,4 @@ if config_lines is not None:
     sheet.update(range_name=f"A1:G{len(values)}", values=values)
     sheet.format("A1:G1", {"textFormat": {"bold": True}})
 else:
-    print("Erro ao ler o arquivo de configuração. O script não continuará.")
+    print("Erro ao ler o arquivo de configuração.")
